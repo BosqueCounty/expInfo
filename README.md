@@ -7,6 +7,12 @@
 
 ---
 
+## 🔗 Live Dashboard
+
+**[View the Live Dashboard on GitHub Pages](https://bosquecounty.github.io/expInfo/)**
+
+---
+
 ## 📊 What It Does
 
 The PG Exhibits Lead Terminal identifies **new business prospects for exhibit sales** by surfacing companies that:
@@ -61,3 +67,4 @@ git clone https://github.com/your-org/pg-exhibits-lead-terminal.git
 cd pg-exhibits-lead-terminal
 open pg_exhibits_leads.html   # macOS
 # or double-click the file on Windows/Linux
+```
