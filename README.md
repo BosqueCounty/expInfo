@@ -1,4 +1,4 @@
-# PG EXHIBITS — LEAD TERMINAL 🖥️
+# EXPINFO — LEAD TERMINAL 🖥️
 
 > **Bloomberg-style business development intelligence dashboard for trade show lead generation.**
 > A self-contained HTML terminal that surfaces **IMTS-adjacent, non-exhibiting manufacturing technology companies** showing financial signals of imminent marketing budget expansion.
