@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoSec Reports | EXPINFO</title>
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#111111; --panel2:#161616; --border:#2a2a2a;
+    --amber:#ff9900; --amber-dim:#c77700; --green:#00e676; --red:#ff4444;
+    --yellow:#ffd400; --text:#d8d8d8; --dim:#8a8a8a;
+    --mono:'Consolas','SF Mono','Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;padding-bottom:60px}
+  .topbar{display:flex;align-items:center;background:#000;border-bottom:2px solid var(--amber);padding:8px 16px;position:sticky;top:0;z-index:100}
+  .logo{color:var(--amber);font-weight:bold;font-size:18px;letter-spacing:1px;white-space:nowrap}
+  .logo span{color:#fff}
+  .hamburger{display:none;width:28px;height:28px;cursor:pointer;flex-direction:column;justify-content:space-around;margin-left:16px;background:none;border:none}
+  .hamburger span{display:block;width:100%;height:2px;background:var(--amber);transition:all 0.3s}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}
+  .hamburger.active span:nth-child(2){opacity:0}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
+  .clock{color:var(--amber-dim);font-size:12px;margin-left:auto}
+  .sidebar-nav{display:none;position:fixed;left:0;top:50px;width:280px;height:calc(100vh-50px);background:var(--panel);border-right:2px solid var(--border);z-index:99;overflow-y:auto}
+  .sidebar-nav.active{display:block}
+  .sidebar-nav a, .sidebar-nav .nav-section{display:block;padding:12px 16px;color:var(--text);text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #1a1a1a;transition:all 0.3s}
+  .sidebar-nav a:hover{background:var(--panel2);color:var(--amber)}
+  .sidebar-nav .nav-section{color:var(--amber);font-weight:bold;background:var(--panel2);cursor:default}
+  .sidebar-nav .nav-section:hover{background:var(--panel2)}
+  .sidebar-nav .sub-item{padding:8px 16px 8px 24px;font-size:11px;color:var(--dim)}
+  .sidebar-nav .sub-item:hover{color:var(--amber);background:#1a1a1a}
+  body.nav-open{overflow:hidden}
+  .content-wrapper{transition:margin-left 0.3s}
+  body.nav-open .content-wrapper{margin-left:280px}
+  .masthead{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .masthead h1{color:#fff;font-size:15px;letter-spacing:2px}
+  .masthead h1 b{color:var(--amber)}
+  .stamp{color:var(--dim);font-size:11px;text-align:right}
+  .trademark{color:var(--amber);font-size:11px;text-align:right;font-weight:bold}
+  .content{padding:20px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .btn{background:var(--panel2);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px}
+  .btn:hover{border-color:var(--amber)}
+  .btn.active{background:var(--amber);color:#000;font-weight:bold}
+  .search{background:var(--panel2);border:1px solid var(--border);color:var(--amber);font-family:var(--mono);padding:6px 10px;width:300px;outline:none}
+  .search:focus{border-color:var(--amber)}
+  .report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+  .report-card{background:var(--panel);border:1px solid var(--border);padding:16px;cursor:pointer;transition:all 0.3s}
+  .report-card:hover{border-color:var(--amber);box-shadow:0 0 10px rgba(255,153,0,0.2)}
+  .report-card h3{color:var(--amber);font-size:14px;font-weight:bold;margin-bottom:8px;letter-spacing:1px}
+  .report-card .meta{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-bottom:8px;border-bottom:1px solid #222;padding-bottom:8px}
+  .report-card .summary{font-size:11px;line-height:1.6;color:var(--text);margin-bottom:12px}
+  .tag{padding:3px 8px;font-size:9px;font-weight:bold;letter-spacing:.5px;white-space:nowrap;background:var(--panel2);border:1px solid var(--border);border-radius:2px;color:var(--text);margin-right:4px}
+  .tag.critical{border-color:var(--red);color:var(--red)}
+  .tag.high{border-color:var(--yellow);color:var(--yellow)}
+  .tag.medium{border-color:var(--green);color:var(--green)}
+  .tag.low{border-color:var(--dim);color:var(--dim)}
+  .expanded{background:var(--panel2);padding:16px;border-left:3px solid var(--amber);margin-top:12px}
+  .expanded .section{margin-bottom:12px}
+  .expanded .section-title{color:var(--amber);font-weight:bold;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .expanded .item{color:var(--text);font-size:11px;margin:4px 0;padding-left:8px}
+  .expanded ul{margin-left:16px;font-size:11px;line-height:1.6}
+  .expanded li{color:var(--text);margin:4px 0}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);margin:14px 0}
+  .kpi{background:var(--panel2);padding:14px}
+  .kpi .label{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+  .kpi .value{color:var(--amber);font-size:26px;font-weight:bold;margin-top:4px}
+  .kpi .sub{color:var(--dim);font-size:11px;margin-top:2px}
+  footer{position:fixed;bottom:0;left:0;right:0;background:#1c1c1c;border-top:1px solid var(--border);padding:8px 16px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap}
+  @media(max-width:700px){
+    .hide-m{display:none}
+    .hamburger{display:flex}
+    .report-grid{grid-template-columns:1fr}
+    .search{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="hamburger" id="hamburger-btn" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="logo">PG<span>EXHIBITS</span> <span style="color:var(--dim);font-size:11px">INFOSEC</span></div>
+  <div class="clock" id="clock"></div>
+</div>
+
+<div class="sidebar-nav" id="sidebar-nav">
+  <div class="nav-section">📊 NAVIGATION</div>
+  <a href="index.html" onclick="closeNav()">🖥️ Lead Terminal</a>
+  <a href="trade-shows.html" onclick="closeNav()">📅 Trade Shows</a>
+  <a href="infosec-reports.html" onclick="closeNav()">📋 InfoSec Reports</a>
+  
+  <div class="nav-section" style="margin-top:16px">🎯 QUICK ACTIONS</div>
+  <a href="#" onclick="document.getElementById('search').focus(); closeNav(); return false">🔍 Search Reports</a>
+  <a href="#" onclick="document.getElementById('search').value=''; render(); closeNav(); return false">🔄 Reset Filters</a>
+  
+  <div class="nav-section" style="margin-top:16px">📚 RESOURCES</div>
+  <a href="https://github.com/BosqueCounty/expInfo#readme" target="_blank">📖 Documentation</a>
+  <a href="https://github.com/BosqueCounty/expInfo" target="_blank">🔗 GitHub Repository</a>
+  
+  <div class="nav-section" style="margin-top:16px">ℹ️ ABOUT</div>
+  <div class="sub-item">© EXPINFO™ — Internal Use Only</div>
+  <div class="sub-item">InfoSec Intelligence v1.0</div>
+  <div class="sub-item" id="sidebar-time" style="color:var(--amber);font-weight:bold;margin-top:8px"></div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="masthead">
+  <div>
+    <h1>INFOSEC REPORTS — <b>INDUSTRY SECURITY INTELLIGENCE</b></h1>
+    <div style="color:var(--dim);font-size:11px;margin-top:4px">EXECUTIVE RISK BRIEFINGS &amp; THREAT ASSESSMENTS — INTERNAL USE ONLY</div>
+  </div>
+  <div>
+    <div class="trademark">EXPINFO™ — CONFIDENTIAL INTELLIGENCE</div>
+    <div class="mut">Last Updated: 2026-09-01 · Security Intelligence Desk</div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="kpis" id="kpis"></div>
+
+<div class="filters">
+  <input class="search" id="search" placeholder="SEARCH BY TOPIC, INDUSTRY, OR RISK..." oninput="render()">
+  <button class="btn active" data-f="ALL" onclick="setFilter(this)">ALL REPORTS</button>
+  <button class="btn" data-f="critical" onclick="setFilter(this)">🔴 CRITICAL</button>
+  <button class="btn" data-f="high" onclick="setFilter(this)">🟠 HIGH</button>
+  <button class="btn" data-f="medium" onclick="setFilter(this)">🟡 MEDIUM</button>
+</div>
+
+<div class="report-grid" id="reports"></div>
+
+</div>
+
+<footer>
+  <div>EXPINFO™ INFOSEC INTELLIGENCE — INTERNAL DISTRIBUTION ONLY</div>
+  <div class="hide-m">SOURCES: CISA · ISACs · INDUSTRY THREAT REPORTS · VENDOR ADVISORIES</div>
+  <div>© EXPINFO™</div>
+</footer>
+
+<script>
+const REPORTS = [
+  {id:'r001', title:'Critical Ransomware Campaign Targeting Manufacturing', severity:'critical', category:'Ransomware', date:'2026-08-28', industry:'Manufacturing/Industrial', summary:'LockBit 3.0 variant actively targeting manufacturing and industrial facilities across the US. High impact on production lines and systems.', details:'Active campaign with 15+ confirmed victims in precision machinery and automotive sectors. Threat actors demand 2-5M per victim. No patch available — mitigation focus required.', threat_level:'IMMEDIATE ACTION', recommendations:['Isolate critical systems', 'Deploy EDR tools', 'Conduct security audit', 'Incident response planning']},
+  {id:'r002', title:'Supply Chain Compromise: Third-Party SaaS Platform', severity:'critical', category:'Supply Chain', date:'2026-08-26', industry:'SaaS/Cloud', summary:'Widespread vulnerability in popular manufacturing ERP cloud platform affecting 500+ businesses. Critical exposure of customer data.', details:'CVE-2026-41234 — Authentication bypass allowing unauthorized access. Affected platform handles production data, inventory, and financials for mid-market firms.', threat_level:'PATCH IMMEDIATELY', recommendations:['Update to v6.2.1+', 'Audit access logs', 'Reset credentials', 'Notify customers']},
+  {id:'r003', title:'Phishing Attacks Targeting C-Suite in Manufacturing', severity:'high', category:'Phishing', date:'2026-08-25', industry:'Manufacturing', summary:'Spear-phishing campaign impersonating board members and CFOs, targeting payment authorizations and sensitive financial data.', details:'30+ successful compromises across Midwest manufacturers. Attackers leverage LinkedIn and public SEC filings for targeting. Avg loss: $500K per incident.', threat_level:'ELEVATED', recommendations:['MFA enforcement', 'DMARC/SPF setup', 'User training', 'Email filtering upgrade']},
+  {id:'r004', title:'Industrial Control System Vulnerabilities - IMTS Attendees', severity:'high', category:'ICS/OT', date:'2026-08-22', industry:'Automation/Robotics', summary:'Multiple undisclosed ICS vulnerabilities in popular industrial automation platforms used by trade show exhibitors.', details:'Affects PLC and SCADA systems from 3 major vendors. Potential for remote code execution and operational disruption. Vendors releasing patches next month.', threat_level:'MONITOR', recommendations:['Patch management plan', 'Network segmentation', 'Monitoring tools', 'Vendor coordination']},
+  {id:'r005', title:'Insider Threat Intelligence: Manufacturing Data Theft', severity:'high', category:'Insider Threat', date:'2026-08-20', industry:'Manufacturing', summary:'Former employees selling proprietary CAD designs and process specifications to competitors and foreign entities.', details:'3 confirmed arrests in Chicago-area manufacturing sector. Estimated $50M+ in IP loss across 12 companies. Focus on design engineering and R&D roles.', threat_level:'HIGH RISK', recommendations:['Access reviews', 'Data classification', 'Exit protocols', 'IP monitoring']},
+  {id:'r006', title:'API Security Gaps in Manufacturing Cloud Platforms', severity:'high', category:'API Security', date:'2026-08-18', industry:'Manufacturing/Cloud', summary:'Weak API authentication and rate limiting in cloud-based MES platforms allowing data scraping and unauthorized integrations.', details:'Attackers can extract customer lists, pricing data, and operational metrics. No direct exploitation detected yet, but vulnerability window is open.', threat_level:'ACTIVE EXPLOITATION POSSIBLE', recommendations:['API audit', 'Rate limiting', 'OAuth 2.0 upgrade', 'Token rotation']},
+  {id:'r007', title:'Credential Stuffing Attacks on Manufacturing Portals', severity:'medium', category:'Credential Abuse', date:'2026-08-17', industry:'Manufacturing', summary:'Automated login attempts on industry portals using leaked credential databases. 5-10% success rate on legacy accounts.', details:'Targets include supplier portals, vendor management systems, and legacy ERP instances. Reused passwords from prior breaches are primary attack vector.', threat_level:'MONITORING', recommendations:['Password manager rollout', 'MFA on all portals', 'Credential scanning', 'Legacy system audit']},
+  {id:'r008', title:'DDoS Readiness: IMTS 2026 Website & Registration', severity:'medium', category:'DDoS', date:'2026-08-15', industry:'Trade Shows', summary:'Preparedness alert for IMTS online systems ahead of major show. Historical pattern of DDoS attempts during peak registration periods.', details:'Past events saw 3-5 DDoS incidents during early bird registration phases. Attackers target competitor disruption. IMTS IT team on standby.', threat_level:'SEASONAL RISK', recommendations:['DDoS mitigation service', 'Capacity testing', 'Incident response plan', 'Backup infrastructure']},
+  {id:'r009', title:'Malware Alert: Remote Access Trojan (RAT) in Automated Machinery', severity:'medium', category:'Malware', date:'2026-08-12', industry:'Automation', summary:'RAT variants embedded in firmware updates from Chinese industrial automation vendors. Allows remote operational control of CNC and robotic systems.', details:'CISA coordinating with vendor, patches expected in Sept. Affects 200+ US manufacturers using legacy control systems from affected suppliers.', threat_level:'PATCH PENDING', recommendations:['Firmware audit', 'Vendor assessment', 'Network monitoring', 'Segmentation']},
+  {id:'r010', title:'Compliance Update: NIST Cybersecurity Framework v2.1', severity:'medium', category:'Compliance', date:'2026-08-10', industry:'All Manufacturing', summary:'New NIST CSF guidance on supply chain risk management and vendor assessment for manufacturing. Effective October 2026.', details:'Impacts vendor selection, contract language, and audit procedures. Manufacturers must update governance frameworks and assessment templates by Q4.', threat_level:'PROCEDURAL', recommendations:['Framework review', 'Vendor assessments', 'Policy updates', 'Training program']},
+];
+
+let currentFilter = 'ALL';
+let searchQuery = '';
+
+function getKPIs(){
+  const critical = REPORTS.filter(r=>r.severity==='critical').length;
+  const high = REPORTS.filter(r=>r.severity==='high').length;
+  const medium = REPORTS.filter(r=>r.severity==='medium').length;
+  const total = REPORTS.length;
+  
+  return {total, critical, high, medium};
+}
+
+function refreshKPIs(){
+  const kpis = getKPIs();
+  const html = `
+    <div class="kpi"><div class="label">Total Reports</div><div class="value">${kpis.total}</div><div class="sub">current threat intel</div></div>
+    <div class="kpi"><div class="label">🔴 Critical</div><div class="value">${kpis.critical}</div><div class="sub">immediate action</div></div>
+    <div class="kpi"><div class="label">🟠 High</div><div class="value">${kpis.high}</div><div class="sub">priority threats</div></div>
+    <div class="kpi"><div class="label">🟡 Medium</div><div class="value">${kpis.medium}</div><div class="sub">monitor & plan</div></div>
+  `;
+  document.getElementById('kpis').innerHTML = html;
+}
+
+function render(){
+  searchQuery = (document.getElementById('search').value || '').toLowerCase();
+  const filtered = REPORTS.filter(r=>{
+    const matchSearch = (r.title+' '+r.category+' '+r.industry+' '+r.summary).toLowerCase().indexOf(searchQuery) !== -1;
+    if(currentFilter === 'ALL') return matchSearch;
+    return matchSearch && r.severity === currentFilter;
+  });
+  
+  const container = document.getElementById('reports');
+  container.innerHTML = '';
+  
+  if(filtered.length === 0){
+    container.innerHTML = '<div style="grid-column:1/-1;color:var(--dim);padding:20px;text-align:center">No reports match your filters.</div>';
+    return;
+  }
+  
+  filtered.forEach(r=>{
+    const card = document.createElement('div');
+    card.className = 'report-card';
+    const severityColor = r.severity==='critical'?'var(--red)':r.severity==='high'?'var(--yellow)':'var(--green)';
+    const severityIcon = r.severity==='critical'?'🔴':r.severity==='high'?'🟠':'🟡';
+    
+    card.innerHTML = `
+      <h3>${r.title}</h3>
+      <div class="meta">
+        <span>${r.date}</span>
+        <span style="color:${severityColor};font-weight:bold">${severityIcon} ${r.severity.toUpperCase()}</span>
+      </div>
+      <div class="summary">${r.summary}</div>
+      <div>
+        <span class="tag" style="background:var(--panel2);border-color:${severityColor};color:${severityColor}">${r.category}</span>
+        <span class="tag" style="background:var(--panel2)">${r.industry}</span>
+      </div>
+    `;
+    
+    card.addEventListener('click',()=>{
+      const expanded = card.nextElementSibling;
+      if(expanded && expanded.classList.contains('expanded')){
+        expanded.remove();
+      } else {
+        document.querySelectorAll('.expanded').forEach(e=>e.remove());
+        const exp = document.createElement('div');
+        exp.className = 'expanded';
+        exp.innerHTML = `
+          <div class="section">
+            <div class="section-title">Threat Assessment</div>
+            <div class="item"><b>${r.threat_level}</b></div>
+            <div class="item">${r.details}</div>
+          </div>
+          <div class="section">
+            <div class="section-title">Recommended Actions</div>
+            <ul>
+              ${r.recommendations.map(rec=>`<li>✓ ${rec}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-title">Reference</div>
+            <div class="item">Report ID: ${r.id}</div>
+            <div class="item">Published: ${r.date}</div>
+            <div class="item">Source: EXPINFO Security Intelligence</div>
+          </div>
+        `;
+        card.insertAdjacentElement('afterend', exp);
+      }
+    });
+    
+    container.appendChild(card);
+  });
+}
+
+function setFilter(btn){
+  document.querySelectorAll('.filters .btn[data-f]').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.f || 'ALL';
+  render();
+}
+
+function toggleNav(){
+  const sidebar = document.getElementById('sidebar-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+  sidebar.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  document.body.classList.toggle('nav-open');
+}
+
+function closeNav(){
+  const sidebar = document.getElementById('sidebar-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+  sidebar.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.classList.remove('nav-open');
+}
+
+document.addEventListener('click', (e)=>{
+  const sidebar = document.getElementById('sidebar-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+  if(!sidebar.contains(e.target) && !hamburger.contains(e.target) && sidebar.classList.contains('active')){
+    closeNav();
+  }
+});
+
+setInterval(()=>{
+  document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago'})+' CT';
+  document.getElementById('sidebar-time').textContent = new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago'})+' CT';
+},1000);
+
+refreshKPIs();
+render();
+</script>
+
+</body>
+</html>
