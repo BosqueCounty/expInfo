@@ -16,11 +16,27 @@
   .topbar{display:flex;align-items:center;background:#000;border-bottom:2px solid var(--amber);padding:8px 16px;position:sticky;top:0;z-index:100}
   .logo{color:var(--amber);font-weight:bold;font-size:18px;letter-spacing:1px;white-space:nowrap}
   .logo span{color:#fff}
+  .hamburger{display:none;width:28px;height:28px;cursor:pointer;flex-direction:column;justify-content:space-around;margin-left:16px;background:none;border:none}
+  .hamburger span{display:block;width:100%;height:2px;background:var(--amber);transition:all 0.3s}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}
+  .hamburger.active span:nth-child(2){opacity:0}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
   .ticker{flex:1;overflow:hidden;white-space:nowrap;margin-left:20px}
   .ticker-inner{display:inline-block;animation:scroll 45s linear infinite;color:var(--dim)}
   .pos{color:var(--green)} .neg{color:var(--red)}
   @keyframes scroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
   .clock{color:var(--amber-dim);font-size:12px;margin-left:auto}
+  .sidebar-nav{display:none;position:fixed;left:0;top:50px;width:280px;height:calc(100vh-50px);background:var(--panel);border-right:2px solid var(--border);z-index:99;overflow-y:auto}
+  .sidebar-nav.active{display:block}
+  .sidebar-nav a, .sidebar-nav .nav-section{display:block;padding:12px 16px;color:var(--text);text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #1a1a1a;transition:all 0.3s}
+  .sidebar-nav a:hover{background:var(--panel2);color:var(--amber)}
+  .sidebar-nav .nav-section{color:var(--amber);font-weight:bold;background:var(--panel2);cursor:default}
+  .sidebar-nav .nav-section:hover{background:var(--panel2)}
+  .sidebar-nav .sub-item{padding:8px 16px 8px 24px;font-size:11px;color:var(--dim)}
+  .sidebar-nav .sub-item:hover{color:var(--amber);background:#1a1a1a}
+  body.nav-open{overflow:hidden}
+  .content-wrapper{transition:margin-left 0.3s}
+  body.nav-open .content-wrapper{margin-left:280px}
   .masthead{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   .masthead h1{color:#fff;font-size:15px;letter-spacing:2px}
   .masthead h1 b{color:var(--amber)}
@@ -53,16 +69,47 @@
   footer{position:fixed;bottom:0;left:0;right:0;background:#1c1c1c;border-top:1px solid var(--border);padding:8px 16px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap}
   footer .warn{color:var(--yellow)}
   #status{padding:8px 0;color:var(--dim);font-size:12px}
-  @media(max-width:700px){.hide-m{display:none}}
+  @media(max-width:700px){
+    .hide-m{display:none}
+    .hamburger{display:flex}
+    .ticker{display:none}
+  }
 </style>
 </head>
 <body>
 
 <div class="topbar">
+  <button class="hamburger" id="hamburger-btn" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <div class="logo">PG<span>EXHIBITS</span> <span style="color:var(--dim);font-size:11px">TERMINAL</span></div>
   <div class="ticker"><div class="ticker-inner" id="tape"></div></div>
   <div class="clock" id="clock"></div>
 </div>
+
+<div class="sidebar-nav" id="sidebar-nav">
+  <div class="nav-section">📊 NAVIGATION</div>
+  <a href="index.html" onclick="closeNav()">🖥️ Lead Terminal</a>
+  <a href="trade-shows.html" onclick="closeNav()">📅 Trade Shows</a>
+  <a href="infosec-reports.html" onclick="closeNav()">📋 InfoSec Reports</a>
+  
+  <div class="nav-section" style="margin-top:16px">🎯 QUICK ACTIONS</div>
+  <a href="#" onclick="document.getElementById('search').focus(); closeNav(); return false">🔍 Search Prospects</a>
+  <a href="#" onclick="document.getElementById('search').value=''; render(); closeNav(); return false">🔄 Reset Filters</a>
+  
+  <div class="nav-section" style="margin-top:16px">📚 RESOURCES</div>
+  <a href="README.md" target="_blank">📖 Documentation</a>
+  <a href="https://github.com/BosqueCounty/expInfo" target="_blank">🔗 GitHub Repository</a>
+  
+  <div class="nav-section" style="margin-top:16px">ℹ️ ABOUT</div>
+  <div class="sub-item">© EXPINFO™ — Internal Use Only</div>
+  <div class="sub-item">BD Intelligence Platform v1.0</div>
+  <div class="sub-item" id="sidebar-time" style="color:var(--amber);font-weight:bold;margin-top:8px"></div>
+</div>
+
+<div class="content-wrapper">
 
 <div class="masthead">
   <div>
@@ -99,12 +146,40 @@
 </table>
 </div>
 
+</div>
+
 <footer>
   <div>PG EXHIBITS SALES &amp; BD INTELLIGENCE — INTERNAL DISTRIBUTION ONLY</div>
   <div class="hide-m">SOURCES: IMTS.COM · AMT · YAHOO FINANCE · SIGNALBASE · MARKET RESEARCH REPORTS</div>
   <div class="angle">© EXPINFO™</div>
 </footer>
+
 <script>
+/* ---- NAVIGATION ---- */
+function toggleNav(){
+  const sidebar = document.getElementById('sidebar-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+  sidebar.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  document.body.classList.toggle('nav-open');
+}
+
+function closeNav(){
+  const sidebar = document.getElementById('sidebar-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+  sidebar.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.classList.remove('nav-open');
+}
+
+document.addEventListener('click', (e)=>{
+  const sidebar = document.getElementById('sidebar-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+  if(!sidebar.contains(e.target) && !hamburger.contains(e.target) && sidebar.classList.contains('active')){
+    closeNav();
+  }
+});
+
 /* ---- DATA LOADING ---- */
 let DATA = [];
 let filter = "ALL", sortCol = -1, sortAsc = true;
@@ -194,7 +269,12 @@ function refreshUI(){
   const high = DATA.filter(d=>d.p==='HIGH').length;
   const med = DATA.filter(d=>d.p==='MEDIUM').length;
   const low = DATA.filter(d=>d.p==='LOW').length;
-  document.getElementById("kpis").innerHTML=`\n<div class="kpi"><div class="label">Total Prospects</div><div class="value">${total}</div><div class="sub">non-exhibiting / unconfirmed</div></div>\n<div class="kpi"><div class="label">High Priority</div><div class="value">${high}</div><div class="sub up">score-driven / priority A</div></div>\n<div class="kpi"><div class="label">Medium Priority</div><div class="value">${med}</div><div class="sub">funded / growing</div></div>\n<div class="kpi"><div class="label">Pipeline Estimate</div><div class="value">$1.8M+</div><div class="sub">est. annual booth rev potential</div></div>`;
+  document.getElementById("kpis").innerHTML=`
+<div class="kpi"><div class="label">Total Prospects</div><div class="value">${total}</div><div class="sub">non-exhibiting / unconfirmed</div></div>
+<div class="kpi"><div class="label">🔴 HIGH Priority</div><div class="value">${high}</div><div class="sub">nearest to buy decision</div></div>
+<div class="kpi"><div class="label">🟡 MEDIUM Priority</div><div class="value">${med}</div><div class="sub">nurture / monitor</div></div>
+<div class="kpi"><div class="label">⚪ LOW Priority</div><div class="value">${low}</div><div class="sub">long-tail / upsell</div></div>
+`;
 
   const tape = document.getElementById('tape');
   tape.innerHTML = DATA.slice(0,10).map(d=>
@@ -227,7 +307,12 @@ function toggleDetail(tr,d){
   if(nx&&nx.classList.contains('detail')){nx.remove();return}
   document.querySelectorAll('.detail').forEach(e=>e.remove());
   const det=document.createElement('tr');det.className='detail';
-  det.innerHTML=`<td colspan="6">\n    <b class="trig">▸ BUY SIGNALS:</b><br>\n    ${ (d.trig||[]).map(t=>"&nbsp;&nbsp;• "+esc(t)).join('<br>') }<br><br>\n    <span class="angle">▸ PG EXHIBITS PITCH:</span> ${esc(d.a)}\n  </td>`;
+  det.innerHTML=`<td colspan="6">
+    <b class="trig">▸ BUY SIGNALS:</b><br>
+    ${ (d.trig||[]).map(t=>"&nbsp;&nbsp;• "+esc(t)).join('<br>') }<br><br>
+    <span class="angle">▸ PG EXHIBITS PITCH ANGLE:</span><br>
+    &nbsp;&nbsp;${esc(d.a)}<br>
+  </td>`;
   tr.insertAdjacentElement('afterend',det);
 }
 
@@ -240,7 +325,11 @@ function setP(b){
 
 function sort(col){ sortCol = col; render(); }
 
-setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago'})+' CT'},1000);
+setInterval(()=>{
+  const ct = new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago'})+' CT';
+  document.getElementById('clock').textContent = ct;
+  document.getElementById('sidebar-time').textContent = ct;
+},1000);
 
 // Determine showId from URL param `show`; default to imts-2026
 function getParam(name){
@@ -250,5 +339,6 @@ function getParam(name){
 const showId = getParam('show') || 'imts-2026';
 loadProspectsForShow(showId);
 </script>
+
 </body>
 </html>
