@@ -1,0 +1,106 @@
+{
+  "show_id": "pack-expo-international-2026",
+  "prospects": [
+    {
+      "company": "Keurig Dr Pepper",
+      "ticker": "KDP",
+      "hq": "Frisco, TX & Burlington, MA, USA",
+      "sector": "beverage & packaging",
+      "shows": ["pack-expo-international-2026"],
+      "signals": [
+        {
+          "type": "market_entry",
+          "detail": "Pilot of single-serve sustainable packaging at select retailers",
+          "date": "2026-06-30",
+          "source_url": "https://www.keurigdrpepper.com/news/2026/sustainable-pilot",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "capex_increase",
+          "detail": "Planned retrofit of a US packaging line to support new format",
+          "date": "2026-07-05",
+          "source_url": "https://example.com/kdp-capex-2026",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "Pack Expo International 2026",
+      "status": "prospecting",
+      "owner": "bd_team/kdp",
+      "last_reviewed": "2026-09-01",
+      "score": 3.05,
+      "priority": "B"
+    },
+    {
+      "company": "Anheuser-Busch",
+      "ticker": "BUD",
+      "hq": "St. Louis, MO, USA",
+      "sector": "beverage & packaging",
+      "shows": ["pack-expo-international-2026"],
+      "signals": [
+        {
+          "type": "capex_increase",
+          "detail": "Investment in automated canning and secondary packaging equipment",
+          "date": "2026-06-20",
+          "source_url": "https://www.anheuser-busch.com/press/2026-capex",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "hiring_push",
+          "detail": "Recruiting plant maintenance and automation engineers regionally",
+          "date": "2026-06-10",
+          "source_url": "https://careers.anheuser-busch.com/jobs?region=us",
+          "confidence": "inferred"
+        },
+        {
+          "type": "revenue_growth",
+          "detail": "Seasonal volume increases fueling short-term packaging demand",
+          "date": "2026-05-01",
+          "source_url": "https://example.com/anheuser-q2-2026",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "Pack Expo International 2026",
+      "status": "prospecting",
+      "owner": "bd_team/anheuser",
+      "last_reviewed": "2026-09-01",
+      "score": 4.45,
+      "priority": "B"
+    },
+    {
+      "company": "PepsiCo",
+      "ticker": "PEP",
+      "hq": "Purchase, NY, USA",
+      "sector": "food & beverage",
+      "shows": ["pack-expo-international-2026"],
+      "signals": [
+        {
+          "type": "market_entry",
+          "detail": "Testing sustainable packaging across multiple SKUs in pilot markets",
+          "date": "2026-05-15",
+          "source_url": "https://www.pepsico.com/news/2026/sustainable-packaging-pilot",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "revenue_growth",
+          "detail": "Volume growth in snacks & beverages in FY Q1",
+          "date": "2026-05-30",
+          "source_url": "https://investors.pepsico.com/q1-2026",
+          "confidence": "inferred"
+        },
+        {
+          "type": "corporate_pivot",
+          "detail": "Sustainability initiative to reduce packaging waste announced",
+          "date": "2026-04-20",
+          "source_url": "https://www.pepsico.com/sustainability/2026-initiative",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "Pack Expo International 2026",
+      "status": "prospecting",
+      "owner": "bd_team/pepsico",
+      "last_reviewed": "2026-09-01",
+      "score": 4.25,
+      "priority": "B"
+    }
+  ]
+}
