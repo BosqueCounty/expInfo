@@ -1,0 +1,99 @@
+{
+  "show_id": "fabtech-2026",
+  "prospects": [
+    {
+      "company": "Lincoln Electric",
+      "ticker": "LECO",
+      "hq": "Cleveland, OH, USA",
+      "sector": "welding & fabrication",
+      "shows": ["fabtech-2026"],
+      "signals": [
+        {
+          "type": "capex_increase",
+          "detail": "Public disclosure of investment in automated welding cells",
+          "date": "2026-06-11",
+          "source_url": "https://investors.lincolnelectric.com/press/2026",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "hiring_push",
+          "detail": "Regional job listings for application engineers and service techs",
+          "date": "2026-06-01",
+          "source_url": "https://careers.lincolnelectric.com/jobs?date=2026-06",
+          "confidence": "inferred"
+        },
+        {
+          "type": "market_entry",
+          "detail": "Expanded distribution agreement in South America",
+          "date": "2026-05-22",
+          "source_url": "https://example.com/lincoln-distribution-2026",
+          "confidence": "estimate"
+        }
+      ],
+      "nearest_show": "FABTECH 2026",
+      "status": "prospecting",
+      "owner": "bd_team/lincoln",
+      "last_reviewed": "2026-09-01",
+      "score": 5.95,
+      "priority": "A"
+    },
+    {
+      "company": "Trumpf",
+      "ticker": null,
+      "hq": "Ditzingen, Germany",
+      "sector": "laser & sheet-metal",
+      "shows": ["fabtech-2026"],
+      "signals": [
+        {
+          "type": "market_entry",
+          "detail": "US demo fleet expansion and local service hubs announced",
+          "date": "2026-04-20",
+          "source_url": "https://www.trumpf.com/en_US/press/2026-us-expansion",
+          "confidence": "inferred"
+        },
+        {
+          "type": "capex_increase",
+          "detail": "New product release requiring new assembly tooling",
+          "date": "2026-05-12",
+          "source_url": "https://example.com/trumpf-product-launch-2026",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "FABTECH 2026",
+      "status": "prospecting",
+      "owner": "bd_team/trumpf",
+      "last_reviewed": "2026-09-01",
+      "score": 4.95,
+      "priority": "B"
+    },
+    {
+      "company": "Hypertherm",
+      "ticker": null,
+      "hq": "Hanover, NH, USA",
+      "sector": "cutting & thermal systems",
+      "shows": ["fabtech-2026"],
+      "signals": [
+        {
+          "type": "revenue_growth",
+          "detail": "Q2 shipment increases reported for plasma cutting systems",
+          "date": "2026-05-01",
+          "source_url": "https://example.com/hypertherm-q2-2026",
+          "confidence": "inferred"
+        },
+        {
+          "type": "capex_increase",
+          "detail": "Planned automation investments announced in vendor briefing",
+          "date": "2026-06-03",
+          "source_url": "https://example.com/hypertherm-capex-2026",
+          "confidence": "estimate"
+        }
+      ],
+      "nearest_show": "FABTECH 2026",
+      "status": "prospecting",
+      "owner": "bd_team/hypertherm",
+      "last_reviewed": "2026-09-01",
+      "score": 3.85,
+      "priority": "B"
+    }
+  ]
+}
