@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Manufacturing Trade Shows | EXPINFO</title>
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#111111; --panel2:#161616; --border:#2a2a2a;
+    --amber:#ff9900; --amber-dim:#c77700; --green:#00e676; --red:#ff4444;
+    --yellow:#ffd400; --text:#d8d8d8; --dim:#8a8a8a;
+    --mono:'Consolas','SF Mono','Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;padding-bottom:60px}
+  .topbar{display:flex;align-items:center;background:#000;border-bottom:2px solid var(--amber);padding:8px 16px;position:sticky;top:0;z-index:100}
+  .logo{color:var(--amber);font-weight:bold;font-size:18px;letter-spacing:1px;white-space:nowrap}
+  .logo span{color:#fff}
+  .nav{flex:1;margin-left:20px;display:flex;gap:16px}
+  .nav a{color:var(--dim);text-decoration:none;font-size:12px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid transparent;padding:4px 0}
+  .nav a:hover,.nav a.active{color:var(--amber);border-bottom-color:var(--amber)}
+  .clock{color:var(--amber-dim);font-size:12px;margin-left:auto}
+  .masthead{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .masthead h1{color:#fff;font-size:15px;letter-spacing:2px}
+  .masthead h1 b{color:var(--amber)}
+  .stamp{color:var(--dim);font-size:11px;text-align:right}
+  .trademark{color:var(--amber);font-size:11px;text-align:right;font-weight:bold}
+  .content{padding:20px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .btn{background:var(--panel2);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px}
+  .btn:hover{border-color:var(--amber)}
+  .btn.active{background:var(--amber);color:#000;font-weight:bold}
+  .search{background:var(--panel2);border:1px solid var(--border);color:var(--amber);font-family:var(--mono);padding:6px 10px;width:300px;outline:none}
+  .search:focus{border-color:var(--amber)}
+  .show-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:16px}
+  .show-card{background:var(--panel);border:1px solid var(--border);padding:16px;cursor:pointer;transition:all 0.3s}
+  .show-card:hover{border-color:var(--amber);box-shadow:0 0 10px rgba(255,153,0,0.2)}
+  .show-card h3{color:var(--amber);font-size:14px;font-weight:bold;margin-bottom:8px;letter-spacing:1px}
+  .show-card .detail-row{display:flex;justify-content:space-between;padding:4px 0;font-size:11px;border-bottom:1px solid #222}
+  .show-card .detail-row .label{color:var(--dim)}
+  .show-card .detail-row .value{color:var(--text);font-weight:bold}
+  .show-card .categories{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px}
+  .tag{padding:3px 8px;font-size:9px;font-weight:bold;letter-spacing:.5px;white-space:nowrap;background:var(--panel2);border:1px solid var(--border);border-radius:2px;color:var(--text)}
+  .tag.tier1{border-color:var(--red);color:var(--red)}
+  .tag.tier2{border-color:var(--yellow);color:var(--yellow)}
+  .tag.industry{border-color:var(--green);color:var(--green)}
+  .expanded{background:var(--panel2);padding:16px;border-left:3px solid var(--amber)}
+  .expanded .section{margin-bottom:12px}
+  .expanded .section-title{color:var(--amber);font-weight:bold;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .expanded .item{color:var(--text);font-size:11px;margin:2px 0;padding-left:8px}
+  table{width:100%;border-collapse:collapse;font-size:11px;margin-top:12px}
+  th{background:#1c1c1c;color:var(--amber);text-transform:uppercase;font-size:9px;letter-spacing:1px;padding:8px;text-align:left;border-bottom:1px solid var(--border)}
+  td{padding:6px 8px;border-bottom:1px solid #1a1a1a}
+  tr:hover{background:#1a1a12}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);margin:14px 0}
+  .kpi{background:var(--panel2);padding:14px}
+  .kpi .label{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+  .kpi .value{color:var(--amber);font-size:26px;font-weight:bold;margin-top:4px}
+  .kpi .sub{color:var(--dim);font-size:11px;margin-top:2px}
+  .cta{background:var(--amber);color:#000;font-weight:bold;padding:8px 12px;text-decoration:none;border-radius:2px;font-size:11px;display:inline-block;margin-top:8px}
+  .cta:hover{background:#ffb84d}
+  footer{position:fixed;bottom:0;left:0;right:0;background:#1c1c1c;border-top:1px solid var(--border);padding:8px 16px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap}
+  footer .warn{color:var(--yellow)}
+  @media(max-width:700px){.hide-m{display:none} .show-grid{grid-template-columns:1fr} .search{width:100%}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">PG<span>EXHIBITS</span> <span style="color:var(--dim);font-size:11px">SHOW GUIDE</span></div>
+  <div class="nav">
+    <a href="index.html">Lead Terminal</a>
+    <a href="trade-shows.html" class="active">Trade Shows</a>
+  </div>
+  <div class="clock" id="clock"></div>
+</div>
+
+<div class="masthead">
+  <div>
+    <h1>US MANUFACTURING TRADE SHOWS — <b>2024–2026</b></h1>
+    <div style="color:var(--dim);font-size:11px;margin-top:4px">EXHIBITING OPPORTUNITIES IN IMTS-ADJACENT MARKETS</div>
+  </div>
+  <div>
+    <div class="trademark">EXPINFO™ — COMPREHENSIVE TRADE SHOW DIRECTORY</div>
+    <div class="mut" id="updated">Last Updated: 2026-09-01</div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="kpis" id="kpis"></div>
+
+<div class="filters">
+  <input class="search" id="search" placeholder="SEARCH BY SHOW NAME, CITY, OR INDUSTRY..." oninput="render()">
+  <button class="btn active" data-f="ALL" onclick="setFilter(this)">ALL SHOWS</button>
+  <button class="btn" data-f="tier1" onclick="setFilter(this)">TIER 1 (MAJOR)</button>
+  <button class="btn" data-f="tier2" onclick="setFilter(this)">TIER 2 (REGIONAL)</button>
+  <button class="btn" data-f="2025" onclick="setFilter(this)">2025</button>
+  <button class="btn" data-f="2026" onclick="setFilter(this)">2026</button>
+</div>
+
+<div class="show-grid" id="shows"></div>
+
+</div>
+
+<footer>
+  <div>PG EXHIBITS — INTERNAL TRADE SHOW REFERENCE</div>
+  <div class="hide-m">SOURCES: IMTS.COM · EXHIBITOR WEBSITES · AMT · INDUSTRY CALENDARS</div>
+  <div>© EXPINFO™</div>
+</footer>
+
+<script>
+const SHOWS = [
+  // TIER 1 - MAJOR NATIONAL/INTERNATIONAL
+  {id:'imts-2026', name:'IMTS 2026', city:'Chicago', state:'IL', month:'September', year:2026, dates:'14–19', attendance:80000, tier:'TIER 1', categories:['CNC','Automation','Tooling'], website:'https://www.imts.com', description:'International Manufacturing Technology Show — premier industrial machinery & technology trade show in North America.'},
+  {id:'fabtech-2025', name:'FABTECH 2025', city:'Las Vegas', state:'NV', month:'November', year:2025, dates:'11–13', attendance:40000, tier:'TIER 1', categories:['Fabrication','Metal Cutting','Welding'], website:'https://www.fabtechexpo.com', description:'Largest metal fabrication event in North America — sheet metal, tube, plate, welding & finishing equipment.'},
+  {id:'ntx-2025', name:'NTMA Tech Summit 2025', city:'New Orleans', state:'LA', month:'September', year:2025, dates:'10–12', attendance:3500, tier:'TIER 2', categories:['Precision Machining','CNC','Contract Manufacturing'], website:'https://www.ntma.org/events', description:'National Tooling & Machining Association summit — precision manufacturers & contract shops.'},
+  
+  // TIER 2 - REGIONAL/SPECIALIZED
+  {id:'ame-2026', name:'AME Lean Summit', city:'Atlanta', state:'GA', month:'March', year:2026, dates:'9–12', attendance:2000, tier:'TIER 2', categories:['Lean Manufacturing','Continuous Improvement'], website:'https://www.ame.org', description:'Association for Manufacturing Excellence — lean manufacturing & operational excellence.'},
+  {id:'mdec-2025', name:'MDEC Trade Show 2025', city:'Boston', state:'MA', month:'May', year:2025, dates:'20–22', attendance:1200, tier:'TIER 2', categories:['Precision Machining','CNC','Medical Device'], website:'https://www.mdec.org', description:'Medical Device & Equipment & Manufacturing — medical device & precision manufacturing equipment.'},
+  {id:'casa-2025', name:'CASA 2025', city:'Austin', state:'TX', month:'June', year:2025, dates:'3–5', attendance:2500, tier:'TIER 2', categories:['Automation','Robotics','Control Systems'], website:'https://www.casa-automation.org', description:'Control & Automation Systems Association — industrial automation & control technology showcase.'},
+  {id:'wmts-2026', name:'West Manufacturing Tech Summit', city:'Denver', state:'CO', month:'April', year:2026, dates:'14–16', attendance:800, tier:'TIER 2', categories:['CNC','Precision Machining','Tooling'], website:'https://www.wmts-show.com', description:'Western region precision manufacturing & machining technology — regional tier-1 supplier showcase.'},
+  {id:'ise-2025', name:'Industrial Supply Expo 2025', city:'Houston', state:'TX', month:'August', year:2025, dates:'12–14', attendance:3200, tier:'TIER 2', categories:['Industrial Distribution','MRO','Tooling'], website:'https://www.indsuplyexpo.com', description:'Industrial supply & MRO distributor showcase — equipment, supplies & services for manufacturing.'},
+  {id:'mtwest-2026', name:'Manufacturing Technology West 2026', city:'Portland', state:'OR', month:'May', year:2026, dates:'19–21', attendance:1500, tier:'TIER 2', categories:['CNC','Fabrication','Clean Tech'], website:'https://www.mtwest-expo.com', description:'West coast industrial manufacturing & clean tech focus — growing regional hub.'},
+  
+  // TIER 2 - SPECIALIZED/VERTICAL
+  {id:'pack-2025', name:'Packaging Tech Expo 2025', city:'Chicago', state:'IL', month:'October', year:2025, dates:'7–9', attendance:4500, tier:'TIER 2', categories:['Packaging Equipment','Automation','Filling'], website:'https://www.packtechexpo.com', description:'Packaging machinery & automation equipment — fill/seal, labeling, material handling.'},
+  {id:'print-2025', name:'Print Summit 2025', city:'Phoenix', state:'AZ', month:'March', year:2025, dates:'4–6', attendance:2100, tier:'TIER 2', categories:['Printing Equipment','Digital','Finishing'], website:'https://www.printsummit-us.com', description:'Commercial printing & digital printing equipment — presses, digital platforms, finishing.'},
+  {id:'aft-2026', name:'Advanced Foundry Tech 2026', city:'Schaumburg', state:'IL', month:'June', year:2026, dates:'16–18', attendance:1800, tier:'TIER 2', categories:['Casting','Foundry','Metal Forming'], website:'https://www.aftshow.org', description:'Metal casting & foundry technology — die casting, sand casting, forging equipment.'},
+  {id:'pwx-2025', name:'Plastics World Expo 2025', city:'Cleveland', state:'OH', month:'September', year:2025, dates:'17–19', attendance:3800, tier:'TIER 2', categories:['Injection Molding','Extrusion','Thermoplastics'], website:'https://www.plasticsworldexpo.com', description:'Plastics processing & molding equipment — injection molding, extrusion, thermoforming.'},
+  {id:'fab-midwest-2026', name:'Fabricators & Manufacturers Midwest', city:'Madison', state:'WI', month:'April', year:2026, dates:'21–23', attendance:2200, tier:'TIER 2', categories:['Fabrication','Stamping','Sheet Metal'], website:'https://www.fabmidwest-show.com', description:'Midwest metal fabrication showcase — stamping, laser, waterjet, tube bending.'},
+  {id:'robotica-2025', name:'Robotica 2025', city:'San Jose', state:'CA', month:'November', year:2025, dates:'4–6', attendance:5200, tier:'TIER 2', categories:['Robotics','Cobots','Automation'], website:'https://www.robotica-expo.com', description:'Industrial robotics & collaborative automation — arms, vision, controllers, integration.'},
+  {id:'woodex-2025', name:'Woodworking Machinery & Furnishings 2025', city:'Atlanta', state:'GA', month:'August', year:2025, dates:'19–21', attendance:2800, tier:'TIER 2', categories:['Woodworking','Cabinetry','Furniture'], website:'https://www.woodmachineshow.com', description:'Woodworking & cabinetry equipment — CNC, panel saws, sanders, finishing systems.'},
+  
+  // TIER 2 - SUPPLY CHAIN / LOGISTICS
+  {id:'mod-2025', name:'Materials Handling & Logistics Expo 2025', city:'Atlanta', state:'GA', month:'April', year:2025, dates:'8–10', attendance:6000, tier:'TIER 2', categories:['Conveyor','Automation','Warehousing'], website:'https://www.mhe-show.com', description:'Material handling equipment & warehouse automation — conveyors, sorting, AGVs.'},
+  {id:'sup-chain-2026', name:'Supply Chain & Logistics Summit 2026', city:'Nashville', state:'TN', month:'March', year:2026, dates:'17–19', attendance:3500, tier:'TIER 2', categories:['Supply Chain','Logistics','ERP'], website:'https://www.scl-summit.com', description:'Supply chain visibility & logistics optimization — software, hardware, best practices.'},
+
+  // TIER 2 - EMERGING VERTICALS
+  {id:'additive-2025', name:'Additive Manufacturing Expo 2025', city:'Chicago', state:'IL', month:'June', year:2025, dates:'10–12', attendance:4200, tier:'TIER 2', categories:['3D Printing','Additive','Rapid Prototyping'], website:'https://www.amtexpo.com', description:'Additive manufacturing & 3D printing technologies — metal, polymer, hybrid systems.'},
+  {id:'clean-energy-2026', name:'Clean Energy Manufacturing 2026', city:'Boulder', state:'CO', month:'May', year:2026, dates:'12–14', attendance:2600, tier:'TIER 2', categories:['Renewable Energy','EV Components','Battery'], website:'https://www.cleanmfg-summit.com', description:'Clean energy & EV component manufacturing — batteries, motors, thermal management.'},
+];
+
+let currentFilter = 'ALL';
+let searchQuery = '';
+
+function getKPIs(){
+  const year2025 = SHOWS.filter(s=>s.year===2025).length;
+  const year2026 = SHOWS.filter(s=>s.year===2026).length;
+  const tier1 = SHOWS.filter(s=>s.tier==='TIER 1').length;
+  const total = SHOWS.length;
+  
+  return {total, tier1, year2025, year2026};
+}
+
+function refreshKPIs(){
+  const kpis = getKPIs();
+  const html = `
+    <div class="kpi"><div class="label">Total Shows</div><div class="value">${kpis.total}</div><div class="sub">in directory</div></div>
+    <div class="kpi"><div class="label">Tier 1 (Major)</div><div class="value">${kpis.tier1}</div><div class="sub">premier events</div></div>
+    <div class="kpi"><div class="label">2025 Events</div><div class="value">${kpis.year2025}</div><div class="sub">scheduled</div></div>
+    <div class="kpi"><div class="label">2026 Events</div><div class="value">${kpis.year2026}</div><div class="sub">scheduled</div></div>
+  `;
+  document.getElementById('kpis').innerHTML = html;
+}
+
+function render(){
+  searchQuery = (document.getElementById('search').value || '').toLowerCase();
+  const filtered = SHOWS.filter(s=>{
+    const matchSearch = (s.name+' '+s.city+' '+s.categories.join(' ')).toLowerCase().indexOf(searchQuery) !== -1;
+    if(currentFilter === 'ALL') return matchSearch;
+    if(currentFilter === 'tier1') return matchSearch && s.tier === 'TIER 1';
+    if(currentFilter === 'tier2') return matchSearch && s.tier === 'TIER 2';
+    if(['2025','2026'].includes(currentFilter)) return matchSearch && s.year === parseInt(currentFilter);
+    return matchSearch;
+  });
+  
+  const container = document.getElementById('shows');
+  container.innerHTML = '';
+  
+  if(filtered.length === 0){
+    container.innerHTML = '<div style="grid-column:1/-1;color:var(--dim);padding:20px;text-align:center">No shows match your filters.</div>';
+    return;
+  }
+  
+  filtered.forEach(s=>{
+    const card = document.createElement('div');
+    card.className = 'show-card';
+    card.innerHTML = `
+      <h3>${s.name} ${s.year}</h3>
+      <div class="detail-row"><span class="label">📍 Location</span><span class="value">${s.city}, ${s.state}</span></div>
+      <div class="detail-row"><span class="label">📅 Date</span><span class="value">${s.month} ${s.dates}</span></div>
+      <div class="detail-row"><span class="label">👥 Attendance</span><span class="value">~${s.attendance.toLocaleString()}</span></div>
+      <div class="detail-row"><span class="label">⭐ Tier</span><span class="value" style="color:${s.tier==='TIER 1'?'var(--red)':'var(--yellow)'}">${s.tier}</span></div>
+      <div class="categories">
+        ${s.categories.map(c=>`<span class="tag industry">${c}</span>`).join('')}
+      </div>
+      <a href="${s.website}" target="_blank" class="cta">Visit Website →</a>
+    `;
+    
+    card.addEventListener('click',()=>{
+      const expanded = card.nextElementSibling;
+      if(expanded && expanded.classList.contains('expanded')){
+        expanded.remove();
+      } else {
+        document.querySelectorAll('.expanded').forEach(e=>e.remove());
+        const exp = document.createElement('div');
+        exp.className = 'expanded';
+        exp.innerHTML = `
+          <div class="section">
+            <div class="section-title">About This Show</div>
+            <div class="item">${s.description}</div>
+          </div>
+          <table>
+            <tr><th>Field</th><th>Details</th></tr>
+            <tr><td>Official Website</td><td><a href="${s.website}" target="_blank" style="color:var(--amber);text-decoration:underline">${s.website}</a></td></tr>
+            <tr><td>Typical Attendance</td><td>~${s.attendance.toLocaleString()} professionals</td></tr>
+            <tr><td>Event Schedule</td><td>${s.month} ${s.dates}, ${s.year}</td></tr>
+            <tr><td>Industries</td><td>${s.categories.join(', ')}</td></tr>
+            <tr><td>Recommended For</td><td>Equipment vendors, integrators, component suppliers in ${s.categories[0]}</td></tr>
+          </table>
+        `;
+        card.insertAdjacentElement('afterend', exp);
+      }
+    });
+    
+    container.appendChild(card);
+  });
+}
+
+function setFilter(btn){
+  document.querySelectorAll('.filters .btn[data-f]').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.f || 'ALL';
+  render();
+}
+
+setInterval(()=>{
+  document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago'})+' CT';
+},1000);
+
+refreshKPIs();
+render();
+</script>
+
+</body>
+</html>
