@@ -8,27 +8,9 @@
       "sector": "machine-tools",
       "shows": ["imts-2026"],
       "signals": [
-        {
-          "type": "capex_increase",
-          "detail": "Announced new machining center line expansion for high-volume contract work",
-          "date": "2026-06-02",
-          "source_url": "https://press.haas.com/2026/capex-expansion",
-          "confidence": "confirmed"
-        },
-        {
-          "type": "hiring_push",
-          "detail": "Multiple postings for field service technicians and assembly technicians",
-          "date": "2026-05-20",
-          "source_url": "https://careers.haas.com/jobs?date=2026-05",
-          "confidence": "inferred"
-        },
-        {
-          "type": "revenue_growth",
-          "detail": "Quarterly revenue uptick reported in Q2 operational brief",
-          "date": "2026-04-29",
-          "source_url": "https://example.com/haas-q2-brief",
-          "confidence": "inferred"
-        }
+        {"type": "capex_increase", "detail": "Announced new machining center line expansion for high-volume contract work", "date": "2026-06-02", "source_url": "https://press.haas.com/2026/capex-expansion", "confidence": "confirmed"},
+        {"type": "hiring_push", "detail": "Multiple postings for field service technicians and assembly technicians", "date": "2026-05-20", "source_url": "https://careers.haas.com/jobs?date=2026-05", "confidence": "inferred"},
+        {"type": "revenue_growth", "detail": "Quarterly revenue uptick reported in Q2 operational brief", "date": "2026-04-29", "source_url": "https://example.com/haas-q2-brief", "confidence": "inferred"}
       ],
       "nearest_show": "IMTS 2026",
       "status": "prospecting",
@@ -44,27 +26,9 @@
       "sector": "metrology & industrial-software",
       "shows": ["imts-2026"],
       "signals": [
-        {
-          "type": "revenue_growth",
-          "detail": "Moderate YoY growth in manufacturing software segment",
-          "date": "2026-05-05",
-          "source_url": "https://investors.hexagon.com/q2-2026",
-          "confidence": "inferred"
-        },
-        {
-          "type": "market_entry",
-          "detail": "Announced expanded North American service centers and demo fleet",
-          "date": "2026-06-12",
-          "source_url": "https://hexagon.com/press/na-demo-expansion-2026",
-          "confidence": "inferred"
-        },
-        {
-          "type": "capex_increase",
-          "detail": "Planned tooling and assembly upgrades to support new product line",
-          "date": "2026-05-18",
-          "source_url": "https://example.com/hexagon-capex-plan-2026",
-          "confidence": "estimate"
-        }
+        {"type": "revenue_growth", "detail": "Moderate YoY growth in manufacturing software segment", "date": "2026-05-05", "source_url": "https://investors.hexagon.com/q2-2026", "confidence": "inferred"},
+        {"type": "market_entry", "detail": "Announced expanded North American service centers and demo fleet", "date": "2026-06-12", "source_url": "https://hexagon.com/press/na-demo-expansion-2026", "confidence": "inferred"},
+        {"type": "capex_increase", "detail": "Planned tooling and assembly upgrades to support new product line", "date": "2026-05-18", "source_url": "https://example.com/hexagon-capex-plan-2026", "confidence": "estimate"}
       ],
       "nearest_show": "IMTS 2026",
       "status": "prospecting",
@@ -80,27 +44,9 @@
       "sector": "additive-manufacturing",
       "shows": ["imts-2026"],
       "signals": [
-        {
-          "type": "capex_increase",
-          "detail": "Announced automated production line retrofits at manufacturing facility",
-          "date": "2026-06-10",
-          "source_url": "https://investors.desktopmetal.com/press-releases/2026",
-          "confidence": "confirmed"
-        },
-        {
-          "type": "funding_round",
-          "detail": "Strategic growth-capital round led by an industrial investor",
-          "date": "2026-05-22",
-          "source_url": "https://example.com/desktopmetal-funding-q2-2026",
-          "confidence": "confirmed"
-        },
-        {
-          "type": "revenue_growth",
-          "detail": "Sequential revenue improvement driven by factory sales",
-          "date": "2026-04-30",
-          "source_url": "https://example.com/desktopmetal-q1-results",
-          "confidence": "inferred"
-        }
+        {"type": "capex_increase", "detail": "Announced automated production line retrofits at manufacturing facility", "date": "2026-06-10", "source_url": "https://investors.desktopmetal.com/press-releases/2026", "confidence": "confirmed"},
+        {"type": "funding_round", "detail": "Strategic growth-capital round led by an industrial investor", "date": "2026-05-22", "source_url": "https://example.com/desktopmetal-funding-q2-2026", "confidence": "confirmed"},
+        {"type": "revenue_growth", "detail": "Sequential revenue improvement driven by factory sales", "date": "2026-04-30", "source_url": "https://example.com/desktopmetal-q1-results", "confidence": "inferred"}
       ],
       "nearest_show": "IMTS 2026",
       "status": "prospecting",
@@ -116,34 +62,10 @@
       "sector": "ai-hardware & compute",
       "shows": ["imts-2026"],
       "signals": [
-        {
-          "type": "revenue_growth",
-          "detail": "Strong data-center and industrial compute demand reported in earnings",
-          "date": "2026-05-20",
-          "source_url": "https://investor.nvidia.com/press-releases/2026",
-          "confidence": "confirmed"
-        },
-        {
-          "type": "hiring_push",
-          "detail": "Large hiring rounds for industrial solutions & edge-engineering teams",
-          "date": "2026-06-15",
-          "source_url": "https://careers.nvidia.com/jobs?team=industrial",
-          "confidence": "confirmed"
-        },
-        {
-          "type": "market_entry",
-          "detail": "Announced industrial automation platform partnerships targeting OEMs",
-          "date": "2026-04-12",
-          "source_url": "https://blogs.nvidia.com/industrial-platform-2026",
-          "confidence": "confirmed"
-        },
-        {
-          "type": "capex_increase",
-          "detail": "Planned expansion of regional demo & integration centers",
-          "date": "2026-06-05",
-          "source_url": "https://example.com/nvidia-capex-2026",
-          "confidence": "inferred"
-        }
+        {"type": "revenue_growth", "detail": "Strong data-center and industrial compute demand reported in earnings", "date": "2026-05-20", "source_url": "https://investor.nvidia.com/press-releases/2026", "confidence": "confirmed"},
+        {"type": "hiring_push", "detail": "Large hiring rounds for industrial solutions & edge-engineering teams", "date": "2026-06-15", "source_url": "https://careers.nvidia.com/jobs?team=industrial", "confidence": "confirmed"},
+        {"type": "market_entry", "detail": "Announced industrial automation platform partnerships targeting OEMs", "date": "2026-04-12", "source_url": "https://blogs.nvidia.com/industrial-platform-2026", "confidence": "confirmed"},
+        {"type": "capex_increase", "detail": "Planned expansion of regional demo & integration centers", "date": "2026-06-05", "source_url": "https://example.com/nvidia-capex-2026", "confidence": "inferred"}
       ],
       "nearest_show": "IMTS 2026",
       "status": "prospecting",
@@ -151,6 +73,374 @@
       "last_reviewed": "2026-09-01",
       "score": 8.7,
       "priority": "S"
+    },
+    {
+      "company": "Hurco Companies",
+      "ticker": "HURC",
+      "hq": "Indianapolis, IN, USA",
+      "sector": "metal-removal",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "revenue_growth", "detail": "Revenue growing double digits; orders surged 63% in Americas", "date": "2026-06-15", "source_url": "https://example.com/hurco-orders-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/hurco",
+      "last_reviewed": "2026-09-01",
+      "score": 7.5,
+      "priority": "A"
+    },
+    {
+      "company": "Hyundai Wia",
+      "ticker": "011210.KS",
+      "hq": "Changwon, South Korea",
+      "sector": "robotics",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "corporate_pivot", "detail": "Group revenue +22% with robotics pivot and RMAC expansion", "date": "2026-06-01", "source_url": "https://example.com/hyundai-wia-robotics", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/hyundai-wia",
+      "last_reviewed": "2026-09-01",
+      "score": 7.2,
+      "priority": "A"
+    },
+    {
+      "company": "Markforged",
+      "ticker": "MKFG",
+      "hq": "Watertown, MA, USA",
+      "sector": "additive-manufacturing",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "revenue_growth", "detail": "Strong growth in carbon-fiber and metal printing segments", "date": "2026-05-10", "source_url": "https://example.com/markforged-q2-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/markforged",
+      "last_reviewed": "2026-09-01",
+      "score": 7.0,
+      "priority": "A"
+    },
+    {
+      "company": "Xometry",
+      "ticker": "XMTR",
+      "hq": "North Bethesda, MD, USA",
+      "sector": "digital-manufacturing",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "market_entry", "detail": "Platform expansion and continued marketplace growth; strong lead-gen needs", "date": "2026-05-18", "source_url": "https://example.com/xometry-growth-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/xometry",
+      "last_reviewed": "2026-09-01",
+      "score": 7.1,
+      "priority": "A"
+    },
+    {
+      "company": "NEURA Robotics",
+      "ticker": "PRIVATE",
+      "hq": "Metzingen, Germany",
+      "sector": "humanoid-robotics",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series B funded and scaling toward Series C", "date": "2026-05-30", "source_url": "https://example.com/neura-seriesb", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/neura",
+      "last_reviewed": "2026-09-01",
+      "score": 8.0,
+      "priority": "A"
+    },
+    {
+      "company": "Augmentus",
+      "ticker": "PRIVATE",
+      "hq": "Singapore",
+      "sector": "robot-vision",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "$11M Series A — growth capital for US expansion", "date": "2026-04-20", "source_url": "https://example.com/augmentus-seriesa", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/augmentus",
+      "last_reviewed": "2026-09-01",
+      "score": 7.3,
+      "priority": "A"
+    },
+    {
+      "company": "Monumental",
+      "ticker": "PRIVATE",
+      "hq": "Amsterdam, Netherlands",
+      "sector": "construction-robotics",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "$32M Series B — US expansion stated", "date": "2026-03-15", "source_url": "https://example.com/monumental-seriesb", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/monumental",
+      "last_reviewed": "2026-09-01",
+      "score": 7.4,
+      "priority": "A"
+    },
+    {
+      "company": "Caracol AM",
+      "ticker": "PRIVATE",
+      "hq": "Milan, Italy",
+      "sector": "large-format-am",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series B funded and partnership activity with Comau", "date": "2026-04-01", "source_url": "https://example.com/caracol-seriesb", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/caracol",
+      "last_reviewed": "2026-09-01",
+      "score": 7.1,
+      "priority": "A"
+    },
+    {
+      "company": "Figure",
+      "ticker": "PRIVATE",
+      "hq": "Sunnyvale, CA, USA",
+      "sector": "humanoid-robotics",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series C — deep-pocketed investors supporting scaling", "date": "2026-02-10", "source_url": "https://example.com/figure-seriesc", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/figure",
+      "last_reviewed": "2026-09-01",
+      "score": 8.0,
+      "priority": "A"
+    },
+    {
+      "company": "Standard Bots",
+      "ticker": "PRIVATE",
+      "hq": "Brooklyn, NY, USA",
+      "sector": "cobots",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "market_entry", "detail": "Domestic manufacturing tailwind due to tariffs and named top automation company 2026", "date": "2026-04-05", "source_url": "https://example.com/standardbots-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/standardbots",
+      "last_reviewed": "2026-09-01",
+      "score": 7.0,
+      "priority": "A"
+    },
+    {
+      "company": "Machina Labs",
+      "ticker": "PRIVATE",
+      "hq": "Los Angeles, CA, USA",
+      "sector": "ai-robotics",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series C — AI industrial scaling", "date": "2026-03-20", "source_url": "https://example.com/machinalabs-seriesc", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/machinalabs",
+      "last_reviewed": "2026-09-01",
+      "score": 7.2,
+      "priority": "A"
+    },
+    {
+      "company": "Vention",
+      "ticker": "PRIVATE",
+      "hq": "Montreal, Canada",
+      "sector": "modular-automation",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series D funded — late-stage growth", "date": "2026-01-15", "source_url": "https://example.com/vention-seriesd", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/vention",
+      "last_reviewed": "2026-09-01",
+      "score": 7.0,
+      "priority": "A"
+    },
+    {
+      "company": "RoboDK",
+      "ticker": "PRIVATE",
+      "hq": "Montreal, Canada",
+      "sector": "robotics-software",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "product_launch", "detail": "Feb 2026 product launch driving demo demand", "date": "2026-02-01", "source_url": "https://example.com/robodk-launch", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/robodk",
+      "last_reviewed": "2026-09-01",
+      "score": 6.8,
+      "priority": "A"
+    },
+    {
+      "company": "Comau",
+      "ticker": "STLA",
+      "hq": "Turin, Italy",
+      "sector": "automation",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "partnerships", "detail": "Multiple AM partnerships (Caracol, CEAD, Titomic, Prima)", "date": "2026-04-10", "source_url": "https://example.com/comau-partnerships", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/comau",
+      "last_reviewed": "2026-09-01",
+      "score": 7.0,
+      "priority": "A"
+    },
+    {
+      "company": "3D Systems",
+      "ticker": "DDD",
+      "hq": "Rock Hill, SC, USA",
+      "sector": "additive-manufacturing",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "market_share", "detail": "Aero/defense additive accelerating — company holds leading share in segment", "date": "2026-04-15", "source_url": "https://example.com/3dsystems-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/3dsystems",
+      "last_reviewed": "2026-09-01",
+      "score": 6.0,
+      "priority": "B"
+    },
+    {
+      "company": "Stratasys",
+      "ticker": "SSYS",
+      "hq": "Eden Prairie, MN, USA",
+      "sector": "additive-manufacturing",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "market_share", "detail": "Leading share in industrial additive; prototyping→production shift", "date": "2026-03-10", "source_url": "https://example.com/stratasys-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/stratasys",
+      "last_reviewed": "2026-09-01",
+      "score": 6.1,
+      "priority": "B"
+    },
+    {
+      "company": "Proto Labs",
+      "ticker": "PRLB",
+      "hq": "Maple Plain, MN, USA",
+      "sector": "digital-manufacturing",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "integration", "detail": "Hubs integration and service expansion requiring brand visibility", "date": "2026-04-22", "source_url": "https://example.com/protolabs-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/protolabs",
+      "last_reviewed": "2026-09-01",
+      "score": 6.0,
+      "priority": "B"
+    },
+    {
+      "company": "Gecko Robotics",
+      "ticker": "PRIVATE",
+      "hq": "Pittsburgh, PA, USA",
+      "sector": "inspection-robots",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series E — pre-IPO marketing ramp", "date": "2026-05-01", "source_url": "https://example.com/gecko-seriese", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/gecko",
+      "last_reviewed": "2026-09-01",
+      "score": 6.2,
+      "priority": "B"
+    },
+    {
+      "company": "Staubli Robotics",
+      "ticker": "PRIVATE",
+      "hq": "Pfäffikon, Switzerland",
+      "sector": "cleanroom-robots",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "hiring_push", "detail": "+15% robotics headcount indicating product push into medical/cleanroom sectors", "date": "2026-04-01", "source_url": "https://example.com/staubli-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/staubli",
+      "last_reviewed": "2026-09-01",
+      "score": 5.8,
+      "priority": "B"
+    },
+    {
+      "company": "Kennametal",
+      "ticker": "KMT",
+      "hq": "Pittsburgh, PA, USA",
+      "sector": "tooling",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "market_demand", "detail": "Defense & aerospace tungsten demand increasing", "date": "2026-03-20", "source_url": "https://example.com/kennametal-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/kennametal",
+      "last_reviewed": "2026-09-01",
+      "score": 6.0,
+      "priority": "B"
+    },
+    {
+      "company": "Titomic",
+      "ticker": "TTT",
+      "hq": "Melbourne, Australia",
+      "sector": "cold-spray-am",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "partnerships", "detail": "Cold spray for aero/defense repair; looking for defense prime access", "date": "2026-04-12", "source_url": "https://example.com/titomic-2026", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/titomic",
+      "last_reviewed": "2026-09-01",
+      "score": 5.9,
+      "priority": "B"
+    },
+    {
+      "company": "CEAD",
+      "ticker": "PRIVATE",
+      "hq": "Delft, Netherlands",
+      "sector": "large-format-am",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "partnerships", "detail": "Comau Flexbot partnership and US market entry planning", "date": "2026-04-08", "source_url": "https://example.com/cead-comau", "confidence": "inferred"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/cead",
+      "last_reviewed": "2026-09-01",
+      "score": 6.2,
+      "priority": "B"
+    },
+    {
+      "company": "FORT Robotics",
+      "ticker": "PRIVATE",
+      "hq": "Nashville, TN, USA",
+      "sector": "safety-systems",
+      "shows": ["imts-2026"],
+      "signals": [
+        {"type": "funding_round", "detail": "Series A funded; compliance and safety market education needed", "date": "2026-03-30", "source_url": "https://example.com/fort-seriesa", "confidence": "confirmed"}
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/fort",
+      "last_reviewed": "2026-09-01",
+      "score": 5.8,
+      "priority": "B"
     }
   ]
 }
