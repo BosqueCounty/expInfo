@@ -1,0 +1,148 @@
+{
+  "shows": [
+    {
+      "id": "imts-2026",
+      "name": "IMTS 2026",
+      "dates": "2026-09-14 to 2026-09-19",
+      "city": "Chicago",
+      "venue": "McCormick Place",
+      "contact_by": "2026-07-01",
+      "sector_scopes": ["manufacturing", "machine-tools", "automation"],
+      "signal_weights": {
+        "revenue_growth": 1.2,
+        "funding_round": 0.4,
+        "hiring_push": 1.0,
+        "capex_increase": 1.8,
+        "corporate_pivot": 0.6,
+        "market_entry": 0.8
+      },
+      "notes": "Large machine tools & automation show. Prioritize capex and on-floor demo prospects; expect OEMs, integrators, and inspection/metrology vendors."
+    },
+    {
+      "id": "pack-expo-international-2026",
+      "name": "Pack Expo International 2026",
+      "dates": "2026-10-18 to 2026-10-21",
+      "city": "Chicago",
+      "venue": "McCormick Place",
+      "contact_by": "2026-08-01",
+      "sector_scopes": ["packaging", "food-beverage", "consumer-goods"],
+      "signal_weights": {
+        "revenue_growth": 1.3,
+        "funding_round": 0.3,
+        "hiring_push": 0.9,
+        "capex_increase": 1.4,
+        "corporate_pivot": 0.7,
+        "market_entry": 1.1
+      },
+      "notes": "Packaging & F&B focus. Market-entry and sustainability-driven packaging changes are high priority."
+    },
+    {
+      "id": "fabtech-2026",
+      "name": "FABTECH 2026",
+      "dates": "2026-10-21 to 2026-10-23",
+      "city": "Las Vegas",
+      "venue": "LVCC",
+      "contact_by": "2026-08-28",
+      "sector_scopes": ["metal-fabrication", "manufacturing", "industrial"],
+      "signal_weights": {
+        "revenue_growth": 1.1,
+        "funding_round": 0.4,
+        "hiring_push": 0.9,
+        "capex_increase": 1.7,
+        "corporate_pivot": 0.5,
+        "market_entry": 0.9
+      },
+      "notes": "Fabrication and heavy industry — prioritize capital-spend signals, welding/laser integrators, and aftermarket service expansions."
+    },
+    {
+      "id": "mdm-west-2027",
+      "name": "MD&M West 2027",
+      "dates": "2027-02-09 to 2027-02-11",
+      "city": "Anaheim",
+      "venue": "Anaheim Convention Center",
+      "contact_by": "2026-11-15",
+      "sector_scopes": ["medical-devices", "life-sciences", "biotech-supply"],
+      "signal_weights": {
+        "revenue_growth": 1.0,
+        "funding_round": 1.2,
+        "hiring_push": 0.8,
+        "capex_increase": 1.0,
+        "corporate_pivot": 0.9,
+        "market_entry": 0.8
+      },
+      "notes": "Medical-device OEMs and suppliers — regulatory timelines and funding/regulatory signals matter; sales cycles are longer."
+    },
+    {
+      "id": "pack-expo-southeast-2027",
+      "name": "Pack Expo Southeast 2027",
+      "dates": "2027-04-12 to 2027-04-14",
+      "city": "Atlanta",
+      "venue": "Georgia World Congress Center",
+      "contact_by": "2026-12-01",
+      "sector_scopes": ["packaging", "distribution", "retail-supply"],
+      "signal_weights": {
+        "revenue_growth": 1.1,
+        "funding_round": 0.3,
+        "hiring_push": 0.9,
+        "capex_increase": 1.3,
+        "corporate_pivot": 0.6,
+        "market_entry": 1.0
+      },
+      "notes": "Regional packaging show; strong for distribution-level automation and local packagers."
+    },
+    {
+      "id": "promat-2027",
+      "name": "ProMat 2027",
+      "dates": "2027-04-19 to 2027-04-21",
+      "city": "Chicago",
+      "venue": "McCormick Place",
+      "contact_by": "2026-12-15",
+      "sector_scopes": ["logistics", "warehouse-automation", "material-handling"],
+      "signal_weights": {
+        "revenue_growth": 1.0,
+        "funding_round": 0.5,
+        "hiring_push": 1.1,
+        "capex_increase": 1.6,
+        "corporate_pivot": 0.7,
+        "market_entry": 0.9
+      },
+      "notes": "Warehouse automation & logistics — hiring and capex for distribution centers are strong indicators for exhibit ROI."
+    },
+    {
+      "id": "automate-2027",
+      "name": "Automate 2027",
+      "dates": "2027-05-10 to 2027-05-13",
+      "city": "Las Vegas",
+      "venue": "LVCC",
+      "contact_by": "2027-01-15",
+      "sector_scopes": ["robotics", "automation", "ai-systems"],
+      "signal_weights": {
+        "revenue_growth": 1.2,
+        "funding_round": 1.0,
+        "hiring_push": 1.3,
+        "capex_increase": 1.4,
+        "corporate_pivot": 0.8,
+        "market_entry": 0.9
+      },
+      "notes": "Robotics & automation — funding and hiring are strong leading indicators for product deployment and booth demos."
+    },
+    {
+      "id": "fabtech-2027",
+      "name": "FABTECH 2027",
+      "dates": "2027-09-13 to 2027-09-16",
+      "city": "Chicago",
+      "venue": "McCormick Place",
+      "contact_by": "2027-04-30",
+      "sector_scopes": ["metal-fabrication", "manufacturing", "industrial"],
+      "signal_weights": {
+        "revenue_growth": 1.1,
+        "funding_round": 0.4,
+        "hiring_push": 1.0,
+        "capex_increase": 1.7,
+        "corporate_pivot": 0.5,
+        "market_entry": 0.9
+      },
+      "notes": "Fall FABTECH edition in Chicago; similar profile to FABTECH Las Vegas but Midwest-focused."
+    }
+  ]
+}
