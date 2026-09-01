@@ -139,11 +139,8 @@ function summarizeGrowth(signals){
 async function tryFetchWithFallback(showId){
   const enc = encodeURIComponent(showId) ;
   const candidates = [
-    // relative (works when served from the repo root or GitHub Pages project site)
     `data/prospects/${enc}.json`,
-    // raw.githubusercontent (works from GitHub file view or when relative path fails)
     `https://raw.githubusercontent.com/BosqueCounty/expInfo/main/data/prospects/${enc}.json`,
-    // jsDelivr CDN (another fallback)
     `https://cdn.jsdelivr.net/gh/BosqueCounty/expInfo@main/data/prospects/${enc}.json`
   ];
   let lastErr = null;
