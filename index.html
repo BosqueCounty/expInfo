@@ -52,6 +52,7 @@
   .trig{color:var(--yellow)} .angle{color:var(--amber)}
   footer{position:fixed;bottom:0;left:0;right:0;background:#1c1c1c;border-top:1px solid var(--border);padding:8px 16px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap}
   footer .warn{color:var(--yellow)}
+  #status{padding:8px 0;color:var(--dim);font-size:12px}
   @media(max-width:700px){.hide-m{display:none}}
 </style>
 </head>
@@ -87,6 +88,8 @@
   <button class="btn" data-p="LOW" onclick="setP(this)">⚪ LOW</button>
 </div>
 
+<div id="status"></div>
+
 <table id="tbl">
   <thead><tr>
     <th>COMPANY</th><th>TICKER</th><th>SECTOR</th>
@@ -106,10 +109,9 @@
 let DATA = [];
 let filter = "ALL", sortCol = -1, sortAsc = true;
 
-function esc(s){ return String(s||"").replace(/</g, "&lt;").replace(/&/g, "&amp;"); }
+function esc(s){ return String(s||"").replace(/&/g,'&amp;').replace(/</g, "&lt;"); }
 
 function mapPriority(item){
-  // Prefer explicit numeric score when available, otherwise map priority letters
   if(typeof item.score === 'number'){
     if(item.score >= 7) return 'HIGH';
     if(item.score >= 5) return 'MEDIUM';
@@ -126,7 +128,6 @@ function mapPriority(item){
 
 function summarizeGrowth(signals){
   if(!signals || !signals.length) return '';
-  // prefer revenue_growth or capex_increase or funding_round
   const prefer = ['revenue_growth','capex_increase','funding_round','hiring_push','market_entry'];
   for(const t of prefer){
     const s = signals.find(x=>x.type===t);
@@ -135,12 +136,41 @@ function summarizeGrowth(signals){
   return signals[0].detail || '';
 }
 
+async function tryFetchWithFallback(showId){
+  const enc = encodeURIComponent(showId) ;
+  const candidates = [
+    // relative (works when served from the repo root or GitHub Pages project site)
+    `data/prospects/${enc}.json`,
+    // raw.githubusercontent (works from GitHub file view or when relative path fails)
+    `https://raw.githubusercontent.com/BosqueCounty/expInfo/main/data/prospects/${enc}.json`,
+    // jsDelivr CDN (another fallback)
+    `https://cdn.jsdelivr.net/gh/BosqueCounty/expInfo@main/data/prospects/${enc}.json`
+  ];
+  let lastErr = null;
+  for(const url of candidates){
+    document.getElementById('status').textContent = 'Loading ' + url + ' ...';
+    try{
+      const res = await fetch(url);
+      if(res.ok){
+        const j = await res.json();
+        document.getElementById('status').textContent = 'Loaded data from ' + url;
+        return {json:j, url};
+      } else {
+        lastErr = new Error('HTTP ' + res.status + ' for ' + url);
+        console.warn(lastErr);
+      }
+    }catch(e){
+      lastErr = e;
+      console.warn('Fetch error for', url, e);
+    }
+  }
+  throw lastErr || new Error('All fetch attempts failed');
+}
+
 async function loadProspectsForShow(showId){
   try{
-    const url = '/data/prospects/' + encodeURIComponent(showId) + '.json';
-    const res = await fetch(url);
-    if(!res.ok) throw new Error('Fetch failed: '+res.status);
-    const j = await res.json();
+    const result = await tryFetchWithFallback(showId);
+    const j = result.json;
     const prospects = j.prospects || [];
     DATA = prospects.map(p=>({
       c: p.company,
@@ -149,13 +179,15 @@ async function loadProspectsForShow(showId){
       h: p.hq || '',
       g: summarizeGrowth(p.signals),
       p: mapPriority(p),
-      trig: (p.signals||[]).map(s=>s.detail),
+      trig: (p.signals||[]).map(s=>s.detail||''),
       a: p.pitch || ('Owner: '+(p.owner||''))
     }));
     refreshUI();
   }catch(err){
     console.error(err);
-    document.getElementById('rows').innerHTML = '<tr><td colspan="6" style="color:var(--yellow);padding:12px">Failed to load data for '+esc(showId)+'. See console for details.</td></tr>';
+    const status = document.getElementById('status');
+    status.innerHTML = '<span style="color:var(--yellow)">Failed to load data for '+esc(showId)+'.</span> See console for details. Tried multiple URLs.';
+    document.getElementById('rows').innerHTML = '<tr><td colspan="6" style="color:var(--yellow);padding:12px">Failed to load data — check console and network panel. Attempted URLs shown above.</td></tr>';
   }
 }
 
