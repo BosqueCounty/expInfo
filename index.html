@@ -38,7 +38,7 @@
   .search{background:var(--panel2);border:1px solid var(--border);color:var(--amber);font-family:var(--mono);padding:6px 10px;width:220px;outline:none}
   .search:focus{border-color:var(--amber)}
   table{width:100%;border-collapse:collapse;font-size:12px}
-  th{background:#1c1c1c;color:var(--amber);text-transform:uppercase;font-size:10px;letter-spacing:1px;padding:8px;text-align:left;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+  th{background:#1c1c1c;color:var(--amber);text-transform:uppercase;font-size:10px;letter-spacing:1px;padding:8px;text-align:left;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
   td{padding:7px 8px;border-bottom:1px solid #1a1a1a;vertical-align:top}
   tr.row:hover{background:#1a1a12;cursor:pointer}
   .tag{padding:2px 7px;font-size:10px;font-weight:bold;letter-spacing:.5px;white-space:nowrap}
@@ -50,7 +50,7 @@
   .detail{display:none;background:var(--panel2)}
   .detail td{padding:12px 16px;font-size:11px;line-height:1.7;border-left:3px solid var(--amber)}
   .trig{color:var(--yellow)} .angle{color:var(--amber)}
-  footer{position:fixed;bottom:0;left:0;right:0;background:#1c1c1c;border-top:1px solid var(--border);padding:8px 16px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  footer{position:fixed;bottom:0;left:0;right:0;background:#1c1c1c;border-top:1px solid var(--border);padding:8px 16px;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap}
   footer .warn{color:var(--yellow)}
   @media(max-width:700px){.hide-m{display:none}}
 </style>
@@ -102,158 +102,124 @@
   <div class="angle">© EXPINFO™</div>
 </footer>
 <script>
-const DATA=[
-{c:"Hurco Companies",t:"HURC (NASDAQ)",s:"Metal Removal — CNC",h:"Indianapolis, IN",g:"Rev +16.5% · Orders +63%",p:"HIGH",
- trig:["Revenue growing double digits; orders surging 63% in Americas","Stock +23.6% over 2 years — management confidence","Losses narrowing — profitability inflection → marketing trigger","3 brands (Hurco, Milltronics, Takumi) need unified presence"],
- a:"Multi-brand unified booth; re-entry at IMTS 2028 / Westec / Eastec"},
-{c:"Hyundai Wia",t:"011210.KS",s:"Robotics pivot",h:"Changwon, South Korea",g:"Parent rev +22.1% · RMAC 10x",p:"HIGH",
- trig:["Group revenue +22% with robotics pivot","RMAC expansion 10x — hiring/buildout","Boston Dynamics partnership needs brand visibility","Post-divestiture rebrand needs launch platform"],
- a:"Robotics rebrand launch at Automate 2027 / IMTS 2028"},
-{c:"Markforged",t:"MKFG (NYSE)",s:"Additive — carbon fiber + metal",h:"Watertown, MA",g:"Desktop 3DP mkt +23.8% CAGR",p:"HIGH",
- trig:["Fastest-growing AM segment (23.8% CAGR)","Carbon fiber printing needs live demo env","Post-merger portfolio needs unified messaging"],
- a:"Hands-on carbon fiber demo station; post-merger integration booth"},
-{c:"Xometry",t:"XMTR (NASDAQ)",s:"Digital Mfg Marketplace",h:"North Bethesda, MD",g:"$34.85B market tailwind 2026",p:"HIGH",
- trig:["Marketplace model = constant lead-gen need","Digital-native; likely underinvested in shows","Volume tracks mfg market growth"],
- a:"First-time exhibitor package; ROI-driven lead capture"},
-{c:"NEURA Robotics",t:"PRIVATE",s:"Cognitive/humanoid robots",h:"Metzingen, Germany",g:"Series B funded",p:"HIGH",
- trig:["Series B — scaling toward Series C","Cognitive robotics = headline demos","EU company entering US market"],
- a:"US market-entry booth at Automate 2027 / IMTS 2028"},
-{c:"Augmentus",t:"PRIVATE",s:"Robot vision / toolpath AI",h:"Singapore",g:"$11M Series A",p:"HIGH",
- trig:["$11M Series A — needs acquisition channels","Vision tech is demo-friendly","Targets robotics novices — IMTS buyer pool"],
- a:"Live robot vision demo booth; first US trade show presence"},
-{c:"Monumental",t:"PRIVATE",s:"Construction robotics",h:"Amsterdam, Netherlands",g:"$32M Series B — Khosla",p:"HIGH",
- trig:["$32M Series B with explicit US expansion","Khosla backing signals marketing runway","US entry needs awareness platform"],
- a:"US launch booth at construction/manufacturing crossover show"},
-{c:"Caracol AM",t:"PRIVATE",s:"Large-format composite AM",h:"Milan, Italy",g:"Series B funded",p:"HIGH",
- trig:["Series B in manufacturing robotics","Comau partnership needs own brand identity","Large-format AM is visually spectacular"],
- a:"Large-format AM demo; co-branded Comau booth"},
-{c:"Figure",t:"PRIVATE",s:"Humanoid robotics",h:"Sunnyvale, CA",g:"Series C — deep pocketed",p:"HIGH",
- trig:["Series C — scaling commercialization","Most attention-grabbing demo attraction possible","Needs B2B manufacturing partnerships"],
- a:"Headline booth with live humanoid demo at IMTS 2028 / Automate 2027"},
-{c:"Standard Bots",t:"PRIVATE",s:"US-made cobots",h:"Brooklyn, NY",g:"Tariff-driven domestic advantage",p:"HIGH",
- trig:["US-made cobots — tariff tailwind on imports","Named top automation company 2026","Lacks Midwest buyer exposure"],
- a:"First IMTS/Automate booth; US-made positioning; live cobot demos"},
-{c:"Machina Labs",t:"PRIVATE",s:"AI robotic sheet metal forming",h:"Los Angeles, CA",g:"Series C — AI industrial",p:"HIGH",
- trig:["Series C — scaling commercialization","Direct disruptor to press-brake OEMs","AI manufacturing = IMTS 2026 headline theme"],
- a:"Disruptor booth in Fabricating sector; live AI forming demo"},
-{c:"Vention",t:"PRIVATE",s:"Modular automation platform",h:"Montreal, Canada",g:"Series D funded",p:"HIGH",
- trig:["Series D — late-stage growth","Digital-first; underinvested in physical shows","Demo-friendly modular hardware"],
- a:"Live design-to-build booth; on-site customer design-to-assembly demos"},
-{c:"RoboDK",t:"PRIVATE",s:"Software — robot programming",h:"Montreal, Canada",g:"Feb 2026 product launch",p:"HIGH",
- trig:["Fresh product launch needs exposure","Robotic machining = IMTS crossover sweet spot"],
- a:"Product launch booth; live robot programming demos"},
-{c:"Comau",t:"Parent: STLA (NYSE)",s:"Automation / AM partnerships",h:"Turin, Italy (US: Southfield, MI)",g:"Multiple AM partnerships",p:"HIGH",
- trig:["Multiple AM partnerships (Caracol, CEAD, Titomic, Prima) forming","Reshoring messaging needs visibility","Needs unified AM showcase"],
- a:"Unified AM showcase booth; reshoring narrative at IMTS"},
-{c:"3D Systems",t:"DDD (NYSE)",s:"Additive — healthcare/aero",h:"Rock Hill, SC",g:"Aero/defense AM +20.6% share",p:"MEDIUM",
- trig:["Aerospace/defense additive accelerating","Metal AM +16.8% CAGR","Healthcare vertical expanding"],
- a:"Cross-vertical storytelling booth; metal AM demos"},
-{c:"Stratasys",t:"SSYS (NASDAQ)",s:"Additive — industrial leader",h:"Eden Prairie, MN",g:"11.5% global share · mkt +18%",p:"MEDIUM",
- trig:["Leading share in 18% CAGR market","NA concentration 33-41%","Prototyping→production shift"],
- a:"Enhanced additive pavilion presence; serial production demos"},
-{c:"Markforged/Desktop Metal",t:"MKFG",s:"Additive — binder jetting",h:"Burlington, MA",g:"Post-merger integration",p:"MEDIUM",
- trig:["Post-merger unified booth needed","Metal AM shifting to production"],
- a:"Combined entity launch booth; metal production case studies"},
-{c:"Xometry",t:"XMTR (NASDAQ)",s:"Digital marketplace",h:"North Bethesda, MD",g:"Marketplace lead-gen engine",p:"HIGH",
- trig:["Constant customer acquisition need","Digital-native; likely underinvested physically"],
- a:"First-time exhibitor package; ROI-driven lead capture"},
-{c:"Proto Labs",t:"PRLB (NYSE)",s:"Digital Mfg Services",h:"Maple Plain, MN",g:"Hubs integration",p:"MEDIUM",
- trig:["Quick-turn services need brand visibility","Hubs integration needs combined messaging"],
- a:"Engineer-facing booth; combined Proto Labs + Hubs branding"},
-{c:"NEURA/Augmentus/Figure (see above)",t:"PRIVATE",s:"Robotics scale-ups",h:"EU/SG/US",g:"Series A-C funded",p:"HIGH",
- trig:["VC-funded scaling phase","Need first US trade show presence"],
- a:"US market-entry booth packages"},
-{c:"Staubli Robotics",t:"PRIVATE",s:"Cleanroom robots",h:"Pfäffikon, Switzerland (US: Duncan, SC)",g:"+15% robotics headcount",p:"MEDIUM",
- trig:["15% headcount growth in robotics specifically","Medical device mfg is key IMTS vertical","Cleanroom niche needs education"],
- a:"Cleanroom/medical robotics booth; compliance education"},
-{c:"Kennametal",t:"KMT (NYSE)",s:"Tooling / tungsten carbide",h:"Pittsburgh, PA",g:"Defense/aero end markets growing",p:"MEDIUM",
- trig:["Defense & aerospace tungsten demand","Tooling mkt growing 6.5-8.1% CAGR"],
- a:"Defense/aerospace tooling pavilion"},
-{c:"Titomic",t:"TTT (ASX)",s:"Cold spray AM",h:"Melbourne, Australia",g:"Defense prime access needed",p:"MEDIUM",
- trig:["Cold spray for aero/defense repair","Comau partnership needs own brand"],
- a:"Defense-focused cold spray demo at aerospace shows"},
-{c:"CEAD",t:"PRIVATE",s:"Large-format composite AM",h:"Delft, Netherlands",g:"Comau Flexbot partnership",p:"MEDIUM",
- trig:["Large-format AM is visual content","Needs US market entry"],
- a:"Large-format AM demo; co-branded Comau booth"},
-{c:"Caracol AM",t:"PRIVATE",s:"Large-format AM",h:"Milan, Italy",g:"Series B funded",p:"HIGH",
- trig:["Series B funded","Comau partnership needs own brand","Ideal for trade show demos"],
- a:"Large-format AM demo at composites/manufacturing shows"},
-{c:"NEURA Robotics",t:"PRIVATE",s:"Cognitive robots",h:"Metzingen, Germany",g:"Series B",p:"HIGH",
- trig:["Series B scaling","Humanoid demo appeal","US market entry"],
- a:"Automate 2027 / IMTS 2028 booth"},
-{c:"Hurco",t:"HURC",s:"Metal Removal",h:"Indianapolis, IN",g:"+16.5% · orders +63%",p:"HIGH",
- trig:["Orders surging","Profitability inflection","Multi-brand presence needed"],
- a:"Multi-brand unified booth; IMTS/Westec presence"},
-{c:"Hyundai Wia",t:"011210.KS",s:"Robotics pivot",h:"Changwon, S. Korea",g:"+22% parent rev",p:"HIGH",
- trig:["RMAC 10x expansion","Boston Dynamics partnership","Post-divestiture rebrand"],
- a:"Robotics rebrand launch at Automate/IMTS"},
-{c:"Gecko Robotics",t:"PRIVATE",s:"Inspection robots",h:"Pittsburgh, PA",g:"Series E — pre-IPO",p:"MEDIUM",
- trig:["Late-stage, pre-IPO marketing ramp","QA crossover positioning"],
- a:"Pre-IPO brand-building booth"},
-{c:"Monumental",t:"PRIVATE",s:"Construction robotics",h:"Amsterdam, NL",g:"$32M Series B — Khosla",p:"HIGH",
- trig:["$32M Series B — US expansion stated","Khosla backing = runway"],
- a:"US market launch booth at construction crossover show"},
-{c:"FORT Robotics",t:"PRIVATE",s:"Autonomous machine safety",h:"Nashville, TN",g:"Series A funded",p:"MEDIUM",
- trig:["Regulation-driven market education need","Nashville = Southeast mfg corridor"],
- a:"Safety education booth; compliance seminar track"}
-];
+/* ---- DATA LOADING ---- */
+let DATA = [];
+let filter = "ALL", sortCol = -1, sortAsc = true;
+
+function esc(s){ return String(s||"").replace(/</g, "&lt;").replace(/&/g, "&amp;"); }
+
+function mapPriority(item){
+  // Prefer explicit numeric score when available, otherwise map priority letters
+  if(typeof item.score === 'number'){
+    if(item.score >= 7) return 'HIGH';
+    if(item.score >= 5) return 'MEDIUM';
+    return 'LOW';
+  }
+  if(item.priority){
+    const p = String(item.priority).toUpperCase();
+    if(p === 'A' || p === 'S') return 'HIGH';
+    if(p === 'B') return 'MEDIUM';
+    return 'LOW';
+  }
+  return 'MEDIUM';
+}
+
+function summarizeGrowth(signals){
+  if(!signals || !signals.length) return '';
+  // prefer revenue_growth or capex_increase or funding_round
+  const prefer = ['revenue_growth','capex_increase','funding_round','hiring_push','market_entry'];
+  for(const t of prefer){
+    const s = signals.find(x=>x.type===t);
+    if(s) return s.detail;
+  }
+  return signals[0].detail || '';
+}
+
+async function loadProspectsForShow(showId){
+  try{
+    const url = '/data/prospects/' + encodeURIComponent(showId) + '.json';
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('Fetch failed: '+res.status);
+    const j = await res.json();
+    const prospects = j.prospects || [];
+    DATA = prospects.map(p=>({
+      c: p.company,
+      t: p.ticker || 'PRIVATE',
+      s: p.sector || '',
+      h: p.hq || '',
+      g: summarizeGrowth(p.signals),
+      p: mapPriority(p),
+      trig: (p.signals||[]).map(s=>s.detail),
+      a: p.pitch || ('Owner: '+(p.owner||''))
+    }));
+    refreshUI();
+  }catch(err){
+    console.error(err);
+    document.getElementById('rows').innerHTML = '<tr><td colspan="6" style="color:var(--yellow);padding:12px">Failed to load data for '+esc(showId)+'. See console for details.</td></tr>';
+  }
+}
 
 /* ---- RENDER ENGINE ---- */
-let filter="ALL", sortCol=-1, sortAsc=true;
+function refreshUI(){
+  const total = DATA.length;
+  const high = DATA.filter(d=>d.p==='HIGH').length;
+  const med = DATA.filter(d=>d.p==='MEDIUM').length;
+  const low = DATA.filter(d=>d.p==='LOW').length;
+  document.getElementById("kpis").innerHTML=`\n<div class="kpi"><div class="label">Total Prospects</div><div class="value">${total}</div><div class="sub">non-exhibiting / unconfirmed</div></div>\n<div class="kpi"><div class="label">High Priority</div><div class="value">${high}</div><div class="sub up">score-driven / priority A</div></div>\n<div class="kpi"><div class="label">Medium Priority</div><div class="value">${med}</div><div class="sub">funded / growing</div></div>\n<div class="kpi"><div class="label">Pipeline Estimate</div><div class="value">$1.8M+</div><div class="sub">est. annual booth rev potential</div></div>`;
 
-const icons={HIGH:"🔴",MEDIUM:"🟡",LOW:"⚪"};
-const total=DATA.length,
-      high=DATA.filter(d=>d.p==="HIGH").length,
-      med=DATA.filter(d=>d.p==="MEDIUM").length,
-      low=DATA.filter(d=>d.p==="LOW").length;
+  const tape = document.getElementById('tape');
+  tape.innerHTML = DATA.slice(0,10).map(d=>
+    `<span style="color:${d.p==="HIGH"?"var(--red)":d.p==="MEDIUM"?"var(--yellow)":"var(--dim)"}">● ${esc(d.c).toUpperCase().slice(0,18)}</span>`
+  ).join(" &nbsp;·&nbsp; ")+" &nbsp;·&nbsp; EXPINFO™ CONFIDENTIAL &nbsp;·&nbsp; IMTS 2026: SEPT 14-19 &nbsp;·&nbsp; ";
 
-document.getElementById("kpis").innerHTML=`
-<div class="kpi"><div class="label">Total Prospects</div><div class="value">${total}</div><div class="sub">non-exhibiting / unconfirmed</div></div>
-<div class="kpi"><div class="label">High Priority</div><div class="value">${high}</div><div class="sub up">2+ financial triggers</div></div>
-<div class="kpi"><div class="label">Medium Priority</div><div class="value">${med}</div><div class="sub">funded / growing</div></div>
-<div class="kpi"><div class="label">Pipeline Estimate</div><div class="value">$1.8M+</div><div class="sub">est. annual booth rev potential</div></div>`;
+  render();
+}
 
-/* TICKER TAPE */
-const tape=document.getElementById("tape");
-tape.innerHTML=DATA.slice(0,10).map(d=>
- `<span style="color:${d.p==="HIGH"?"var(--red)":d.p==="MEDIUM"?"var(--yellow)":"var(--dim)"}">● ${d.c.toUpperCase().slice(0,18)}</span>`
-).join(" &nbsp;·&nbsp; ")+" &nbsp;·&nbsp; EXPINFO™ CONFIDENTIAL &nbsp;·&nbsp; IMTS 2026: SEPT 14-19 &nbsp;·&nbsp; ";
-
-function esc(s){return s.replace(/</g,"&lt;")}
 function render(){
-  const q=(document.getElementById("search").value||"").toLowerCase();
-  const tb=document.getElementById("rows");tb.innerHTML="";
+  const q=(document.getElementById('search').value||'').toLowerCase();
+  const tb=document.getElementById('rows');tb.innerHTML='';
   DATA.filter(d=>
-    (filter==="ALL"||d.p===filter) &&
-    (d.c+" "+d.s+" "+d.h).toLowerCase()
+    (filter==='ALL' || d.p===filter) &&
+    ((d.c+' '+d.s+' '+d.h+' '+(d.g||'')).toLowerCase().indexOf(q) !== -1)
   ).forEach(d=>{
-    const cls=d.p==="HIGH"?"high":d.p==="MEDIUM"?"med":"low";
-    const tr=document.createElement("tr");tr.className="row";
+    const cls=d.p==='HIGH'?'high':d.p==='MEDIUM'?'med':'low';
+    const tr=document.createElement('tr');tr.className='row';
     tr.innerHTML=`<td>${esc(d.c)}</td><td class="tick">${esc(d.t)}</td><td>${esc(d.s)}</td><td class="hide-m mut">${esc(d.h)}</td><td>${esc(d.g)}</td><td><span class="tag ${cls}">${d.p}</span></td>`;
     tr.onclick=()=>toggleDetail(tr,d);
     tb.appendChild(tr);
   });
+  if(tb.children.length===0){
+    tb.innerHTML = '<tr><td colspan="6" style="color:var(--dim);padding:12px">No prospects match your filters.</td></tr>';
+  }
 }
+
 function toggleDetail(tr,d){
   const nx=tr.nextElementSibling;
-  if(nx&&nx.classList.contains("detail")){nx.remove();return}
-  document.querySelectorAll(".detail").forEach(e=>e.remove());
-  const det=document.createElement("tr");det.className="detail";
-  det.innerHTML=`<td colspan="6">
-    <b class="trig">▸ BUY SIGNALS:</b><br>
-    ${d.trig.map(t=>"&nbsp;&nbsp;• "+esc(t)).join("<br>")}<br><br>
-    <span class="angle">▸ PG EXHIBITS PITCH:</span> ${esc(d.a)}
-  </td>`;
-  tr.insertAdjacentElement("afterend",det);
+  if(nx&&nx.classList.contains('detail')){nx.remove();return}
+  document.querySelectorAll('.detail').forEach(e=>e.remove());
+  const det=document.createElement('tr');det.className='detail';
+  det.innerHTML=`<td colspan="6">\n    <b class="trig">▸ BUY SIGNALS:</b><br>\n    ${ (d.trig||[]).map(t=>"&nbsp;&nbsp;• "+esc(t)).join('<br>') }<br><br>\n    <span class="angle">▸ PG EXHIBITS PITCH:</span> ${esc(d.a)}\n  </td>`;
+  tr.insertAdjacentElement('afterend',det);
 }
-let curFilter="ALL";
-function setP(b){document.querySelectorAll(".controls .btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");curP=b.dataset.p;filter=curP;applyAll()}
-function applyAll(){render()}
-let p="ALL";
-function setP(b){document.querySelectorAll(".controls .btn[data-p]").forEach(x=>x.classList.remove("active"));b.classList.add("active");p=b.dataset.p;render()}
-function sort(col){sortCol=col;render()}
-setInterval(()=>{document.getElementById("clock").textContent=new Date().toLocaleTimeString("en-US",{timeZone:"America/Chicago"})+" CT"},1000);
-render();
+
+function setP(b){
+  document.querySelectorAll('.controls .btn[data-p]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  filter = b.dataset.p || 'ALL';
+  render();
+}
+
+function sort(col){ sortCol = col; render(); }
+
+setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago'})+' CT'},1000);
+
+// Determine showId from URL param `show`; default to imts-2026
+function getParam(name){
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+const showId = getParam('show') || 'imts-2026';
+loadProspectsForShow(showId);
 </script>
 </body>
 </html>
