@@ -1,0 +1,156 @@
+{
+  "show_id": "imts-2026",
+  "prospects": [
+    {
+      "company": "Haas Automation",
+      "ticker": null,
+      "hq": "Oxnard, CA, USA",
+      "sector": "machine-tools",
+      "shows": ["imts-2026"],
+      "signals": [
+        {
+          "type": "capex_increase",
+          "detail": "Announced new machining center line expansion for high-volume contract work",
+          "date": "2026-06-02",
+          "source_url": "https://press.haas.com/2026/capex-expansion",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "hiring_push",
+          "detail": "Multiple postings for field service technicians and assembly technicians",
+          "date": "2026-05-20",
+          "source_url": "https://careers.haas.com/jobs?date=2026-05",
+          "confidence": "inferred"
+        },
+        {
+          "type": "revenue_growth",
+          "detail": "Quarterly revenue uptick reported in Q2 operational brief",
+          "date": "2026-04-29",
+          "source_url": "https://example.com/haas-q2-brief",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/haas",
+      "last_reviewed": "2026-09-01",
+      "score": 7.7,
+      "priority": "A"
+    },
+    {
+      "company": "Hexagon AB",
+      "ticker": "HEXA-B",
+      "hq": "Stockholm, Sweden",
+      "sector": "metrology & industrial-software",
+      "shows": ["imts-2026"],
+      "signals": [
+        {
+          "type": "revenue_growth",
+          "detail": "Moderate YoY growth in manufacturing software segment",
+          "date": "2026-05-05",
+          "source_url": "https://investors.hexagon.com/q2-2026",
+          "confidence": "inferred"
+        },
+        {
+          "type": "market_entry",
+          "detail": "Announced expanded North American service centers and demo fleet",
+          "date": "2026-06-12",
+          "source_url": "https://hexagon.com/press/na-demo-expansion-2026",
+          "confidence": "inferred"
+        },
+        {
+          "type": "capex_increase",
+          "detail": "Planned tooling and assembly upgrades to support new product line",
+          "date": "2026-05-18",
+          "source_url": "https://example.com/hexagon-capex-plan-2026",
+          "confidence": "estimate"
+        }
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/hexagon",
+      "last_reviewed": "2026-09-01",
+      "score": 4.8,
+      "priority": "B"
+    },
+    {
+      "company": "Desktop Metal",
+      "ticker": "DM",
+      "hq": "Burlington, MA, USA",
+      "sector": "additive-manufacturing",
+      "shows": ["imts-2026"],
+      "signals": [
+        {
+          "type": "capex_increase",
+          "detail": "Announced automated production line retrofits at manufacturing facility",
+          "date": "2026-06-10",
+          "source_url": "https://investors.desktopmetal.com/press-releases/2026",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "funding_round",
+          "detail": "Strategic growth-capital round led by an industrial investor",
+          "date": "2026-05-22",
+          "source_url": "https://example.com/desktopmetal-funding-q2-2026",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "revenue_growth",
+          "detail": "Sequential revenue improvement driven by factory sales",
+          "date": "2026-04-30",
+          "source_url": "https://example.com/desktopmetal-q1-results",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/desktopmetal",
+      "last_reviewed": "2026-09-01",
+      "score": 6.2,
+      "priority": "A"
+    },
+    {
+      "company": "NVIDIA",
+      "ticker": "NVDA",
+      "hq": "Santa Clara, CA, USA",
+      "sector": "ai-hardware & compute",
+      "shows": ["imts-2026"],
+      "signals": [
+        {
+          "type": "revenue_growth",
+          "detail": "Strong data-center and industrial compute demand reported in earnings",
+          "date": "2026-05-20",
+          "source_url": "https://investor.nvidia.com/press-releases/2026",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "hiring_push",
+          "detail": "Large hiring rounds for industrial solutions & edge-engineering teams",
+          "date": "2026-06-15",
+          "source_url": "https://careers.nvidia.com/jobs?team=industrial",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "market_entry",
+          "detail": "Announced industrial automation platform partnerships targeting OEMs",
+          "date": "2026-04-12",
+          "source_url": "https://blogs.nvidia.com/industrial-platform-2026",
+          "confidence": "confirmed"
+        },
+        {
+          "type": "capex_increase",
+          "detail": "Planned expansion of regional demo & integration centers",
+          "date": "2026-06-05",
+          "source_url": "https://example.com/nvidia-capex-2026",
+          "confidence": "inferred"
+        }
+      ],
+      "nearest_show": "IMTS 2026",
+      "status": "prospecting",
+      "owner": "bd_team/nvidia",
+      "last_reviewed": "2026-09-01",
+      "score": 8.7,
+      "priority": "S"
+    }
+  ]
+}
